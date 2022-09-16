@@ -10,7 +10,6 @@ router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
 	next();
 });
-// middleware
 
 // routes
 
@@ -25,7 +24,13 @@ router.get('/product-page-template-copy', (req, res) => {
 router.get('/product-page/:product_code', async function (req, res) {
 	var camInfo = await getInfo(req);
 	var camFeatures = await getFeatures(req);
-	res.render('test-view', { info: camInfo, features: camFeatures });
+	var featuresArray = Object.values(camFeatures);
+	featuresArray = featuresArray.filter((item) => !item.length < 1);
+	camInfo.featuresList = featuresArray;
+	// res.send(camInfo);
+	res.render('test-view', {
+		camInfo: camInfo
+	});
 });
 
 module.exports = router;

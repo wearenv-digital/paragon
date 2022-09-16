@@ -7,6 +7,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// dont touch this IT WORKS
+
 async function getFeatures(req) {
 	var connection = await util.promisify(
 		mysqlConf.getConnection.bind(mysqlConf)
@@ -24,7 +26,8 @@ async function getFeatures(req) {
 	});
 	return result;
 }
-exports.getFeatures = getFeatures;
+
+// This gets the row from
 
 async function getInfo(req) {
 	var connection = await util.promisify(
@@ -39,8 +42,10 @@ async function getInfo(req) {
 	var result;
 	Object.keys(rows).forEach(function (key) {
 		result = rows[key];
-		console.log(result);
+		// console.log(result);
 	});
 	return result;
 }
+
 exports.getInfo = getInfo;
+exports.getFeatures = getFeatures;

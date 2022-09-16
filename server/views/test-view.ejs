@@ -13,13 +13,23 @@
 		<div class="test-section">
 			<h4>data is...</h4>
 			<p>
-				<%= info.product_code %>
+				<br>
 			</p>
 		</div>
 		<div>
-			<p>
-				<%= info.product_name%>
-			</p>
+			<ul>
+				<% camInfo.featuresList.forEach(function(item){ %>
+					
+					
+					<li>
+						<%= item %>
+					</li>
+					<% }); %>
+			</ul>
+		</div>
+		<div>
+			<ul>
+			</ul>
 		</div>
 	</body>
 </html>
