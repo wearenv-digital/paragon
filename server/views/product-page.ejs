@@ -246,7 +246,7 @@
 					</li>
 					<li class="list-item space">
 						<h4 class="heading-5"><span class="text-span-4">/</span>
-							<%= product_code %>
+							<%= camInfo.product_code %>
 						</h4>
 					</li>
 				</ul>
@@ -256,40 +256,25 @@
 							<div role="list" class="w-dyn-items">
 								<div role="listitem" class="collection-item w-dyn-item">
 									<h1 class="product-name-h1">
-										<%= %>
+										<%= camInfo.product_name %>
 									</h1>
 									<h4 class="product-code-h4"></h4>
 									<div class="image-bullet-wrapper">
-										<img src="/public/images/BS0S-1Z4I-I68.jpg" loading="lazy" width="345" height="345"
+										<img src="<%= camInfo.image_link %>" loading="lazy" width="345" height="345"
 											sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-											srcset="images/BS0S-1Z4I-I68-p-500.jpg 500w, images/BS0S-1Z4I-I68.jpg 505w" alt=""
+											srcset="<%= camInfo.image_link %> 500w, <%= camInfo.image_link %> 505w" alt=""
 											class="product-image" />
 										<div class="bullet-wrapper">
 											<ul role="list">
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
-												<li></li>
+												<% camInfo.featuresList.forEach(function(item) { %>
+													<li>
+														<%=item%>
+													</li>
+													<% }); %>
 											</ul>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="w-dyn-empty">
-								<div>No items found.</div>
 							</div>
 						</div>
 						<div class="link-block-wrapper">
@@ -354,81 +339,10 @@
 									<div class="specs-container">
 										<div class="specs-wrapper specs-1">
 											<div class="specs-list">
-												<div class="w-dyn-list">
-													<div role="list" class="w-dyn-items">
-														<div role="listitem" class="w-dyn-item">
-															<h4 class="spec-sub-heading">Camera</h4>
-															<div class="div-block-66">
-																<div class="spec-columns w-row">
-																	<div class="w-col w-col-3">
-																		<div>Resolution</div>
-																	</div>
-																	<div class="w-col w-col-9">
-																		<div></div>
-																	</div>
-																</div>
-																<div class="spec-columns w-row">
-																	<div class="w-col w-col-3">
-																		<div>Lens</div>
-																	</div>
-																	<div class="w-col w-col-9">
-																		<div></div>
-																	</div>
-																</div>
-																<div class="spec-columns w-row">
-																	<div class="w-col w-col-3">
-																		<div>Focal Length (mm) Options</div>
-																	</div>
-																	<div class="w-col w-col-9">
-																		<div></div>
-																	</div>
-																</div>
-																<div class="spec-columns w-row">
-																	<div class="w-col w-col-3">
-																		<div>On-board Storage</div>
-																	</div>
-																	<div class="w-col w-col-9">
-																		<div></div>
-																	</div>
-																</div>
-																<div class="spec-columns w-row">
-																	<div class="w-col w-col-3">
-																		<div>Illumination Range</div>
-																	</div>
-																	<div class="w-col w-col-9">
-																		<div></div>
-																	</div>
-																</div>
-																<div class="spec-columns w-row">
-																	<div class="w-col w-col-3">
-																		<div>Sensitivity</div>
-																	</div>
-																	<div class="w-col w-col-9">
-																		<div></div>
-																	</div>
-																</div>
-																<div class="spec-columns w-row">
-																	<div class="w-col w-col-3">
-																		<div>Field of View</div>
-																	</div>
-																	<div class="w-col w-col-9">
-																		<div></div>
-																	</div>
-																</div>
-																<div class="spec-columns w-row">
-																	<div class="w-col w-col-3">
-																		<div>Wide Dynamic Range</div>
-																	</div>
-																	<div class="w-col w-col-9">
-																		<div></div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="w-dyn-empty">
-														<div>No items found.</div>
-													</div>
+												<h4 class="spec-sub-heading">Camera Specs</h4>
+												<div class="key-list">
+													<p class="key-text"></p>
+													<p class="value-text"></p>
 												</div>
 											</div>
 											<div class="specs-list">
