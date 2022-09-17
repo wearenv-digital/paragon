@@ -49,6 +49,7 @@ router.get('/product-page/:product_code', async function (req, res) {
 	featuresArray = featuresArray.filter((item) => !item.length < 1);
 	featuresArray = featuresArray.slice(1, featuresArray.length);
 	camInfo.featuresList = featuresArray;
+	// camInfo is now the full list
 	var fullListObj = {};
 	fullListObj = {
 		...camInfo,
@@ -57,20 +58,50 @@ router.get('/product-page/:product_code', async function (req, res) {
 		...automation,
 		...elecPhys
 	};
-	var keys;
-	keys = Object.keys(fullListObj).filter(
+	var deadKeys;
+	var allKeys;
+	// fullListObj is now the 'wanted' object
+
+	// create array of deadKeys to filter out
+	deadKeys = Object.keys(fullListObj).filter(
 		(k) =>
 			fullListObj[k] === 'n/a' || fullListObj[k] === '*' || fullListObj[k] === ''
 	);
+	// create list of keys from every pair in the data
 
-	console.log(keys);
+	allKeys = Object.keys(fullListObj);
+	
+	// filter out deadKeys from all allkeys
+	let newKeys = [];
 
-	// console.log(typeof keys);
+	newKeys = allKeys.reduce(function (prev, value) {
+		var isDuplicate = false;
+		for (var i = 0; i < deadKeys.length; i++) {
+			if (value === deadKeys[i]) {
+				isDuplicate = true;
+				break;
+			}
+		}
+		if (!isDuplicate) {
+			prev.push(value);
+		}
+		return prev;
+	}, []);
 
-	// delete fullListObj
+	// console.log(newKeys);
+	// finally create new object, with pairs from list of filtered keys 
+
+	var finalObj;
+	function select(arr, obj) {
+		let finalObj = {};
+		for (let k in obj) if (arr.includes(k)) finalObj[k] = obj[k];
+		return finalObj;
+	}
+	finalObj = select(newKeys, fullListObj);
+	// send the finalObject to the view for rendering and processing
 	// res.send(camInfo);
 	res.render('product-page', {
-		camInfo: fullListObj
+		camInfo: finalObj
 	});
 });
 
