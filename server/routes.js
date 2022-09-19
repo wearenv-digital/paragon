@@ -1,3 +1,4 @@
+const { info } = require('console');
 var express = require('express');
 var router = express.Router();
 const path = require('path');
@@ -30,10 +31,6 @@ router.get('/product-page-template-copy', (req, res) => {
 
 // main product-page route
 
-// function removeEmpty(obj) {
-// 	return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
-// }
-
 router.get('/product-page/:product_code', async function (req, res) {
 	var camInfo = await getInfo(req);
 	var camFeatures = await getFeatures(req);
@@ -41,48 +38,42 @@ router.get('/product-page/:product_code', async function (req, res) {
 	var audioVideo = await getAudioVideo(req);
 	var automation = await getAutomation(req);
 	var elecPhys = await getElecPhys(req);
+	console.log(typeof camFeatures);
+	console.log(camFeatures);
 
-	function removeProdCode(arr, obj) {
+	function removeProdCode(arr) {
 		arr = arr.filter((item) => !item.length < 1);
 		arr = arr.slice(1, arr.length);
 		return arr;
 	}
-	var infoArray = Object.values(camInfo);
-	var featuresArray = Object.values(camFeatures);
+	var features = Object.values(camFeatures);
 	var specsArray = Object.values(camSpecs);
 	var AVArray = Object.values(audioVideo);
 	var autoArray = Object.values(automation);
 	var elecPhysArray = Object.values(elecPhys);
+	console.log(features);
+	console.log(typeof features);
 
-	featuresArray = removeProdCode(featuresArray, camFeatures);
-	specsArray = removeProdCode(specsArray, camSpecs);
-	AVArray = removeProdCode(AVArray, audioVideo);
-	autoArray = removeProdCode(autoArray, automation);
-	elecPhysArray = removeProdCode(elecPhysArray, elecPhys);
+	features = removeProdCode(features);
+	specsArray = removeProdCode(specsArray);
+	AVArray = removeProdCode(AVArray);
+	autoArray = removeProdCode(autoArray);
+	elecPhysArray = removeProdCode(elecPhysArray);
+
+	console.log(typeof features);
+	console.log(features);
 
 	// The arrays now do not have product code
-
-	// camFeatures.featuresList = featuresArray;
-	// camSpecs.specsList = specsArray;
-	// audioVideo.avList = AVArray;
-	// automation.autoSpecsList = autoArray;
-	// elecPhys.elecPhysList = elecPhysArray;
-
-	// filter and mutate the array to omit any empties and the first element
-	// featuresArray = featuresArray.filter((item) => !item.length < 1);
-	// featuresArray = featuresArray.slice(1, featuresArray.length);
-	// camInfo.featuresList = featuresArray;
-
-	// camInfo is now the full list
-
-	var deadKeys;
-	var allKeys;
 
 	// fullListObj is now the 'wanted' object
 
 	// create array of deadKeys to filter out
+	// create array of deadVals to filter out
 
 	// turn the following into a reuasable function to perform on every object
+
+	var deadKeys;
+	var allKeys;
 
 	function filterDead(obj) {
 		deadKeys = Object.keys(obj).filter(
@@ -91,40 +82,26 @@ router.get('/product-page/:product_code', async function (req, res) {
 		return deadKeys;
 	}
 
-	function filterGoodKeys(obj) {
-		goodKeys = Object.keys(obj).filter(
+	function filterGoodVals(obj) {
+		goodVals = Object.values(obj).filter(
 			(k) => obj[k] !== 'n/a' || obj[k] !== '*' || obj[k] !== ''
 		);
-		return goodKeys;
+		return goodVals;
 	}
-	// deadKeys = Object.keys(fullListObj).filter(
-	// 	(k) =>
-	// 		fullListObj[k] === 'n/a' || fullListObj[k] === '*' || fullListObj[k] === ''
-	// );
 
 	// create list of keys from every pair in the data
+	// create a list of values from every pair in the data
 
 	function listAllKeys(obj) {
 		allKeys = Object.keys(obj);
 		return allKeys;
 	}
 
-	// function checkDupes(allkeys, deadKeys) {
-	// 	let newKeys;
-	// 	newKeys = allKeys.reduce(function (prev, value) {
-	// 		var isDuplicate = false;
-	// 		for (var i = 0; i < deadKeys.length; i++) {
-	// 			if (value === deadKeys[i]) {
-	// 				isDuplicate = true;
-	// 				break;
-	// 			}
-	// 		}
-	// 		if (!isDuplicate) {
-	// 			prev.push(value);
-	// 		}
-	// 		return prev;
-	// 	}, []);
-	// }
+	function listAllVals(obj) {
+		allVals = Object.values(obj);
+		return allVals;
+	}
+	// var goodSpecsKeys = filterGoodKeys(camSpecs)
 
 	var deadInfoKeys;
 	var deadSpecsKeys;
@@ -138,17 +115,29 @@ router.get('/product-page/:product_code', async function (req, res) {
 	deadAutomationKeys = filterDead(automation);
 	deadElecPhysKeys = filterDead(elecPhys);
 
+	// goodSpecsVals = filterGoodVals(camSpecs);
+
 	// console.log(deadAVKeys); //  works
 
 	// console.log(deadAutomationKeys); // works
 
 	// goodInfoKeys = checkDuplicates();
 
-	var allInfoKeys;
+	// var allInfoKeys;
 	var allSpecsKeys;
 	var allAVKeys;
 	var allAutoKeys;
 	var allElecPhysKeys;
+
+	var allSpecsVals;
+	var allAVVals;
+	var allAutovals;
+	var allElecPhysVals;
+
+	allSpecsVals = listAllVals(camSpecs);
+	allAVVals = listAllVals(audioVideo);
+	allAutovals = listAllVals(audioVideo);
+	allElecPhysVals = listAllVals(elecPhys);
 
 	allInfoKeys = listAllKeys(camInfo);
 	allSpecsKeys = listAllKeys(camSpecs);
@@ -237,20 +226,82 @@ router.get('/product-page/:product_code', async function (req, res) {
 		return prev;
 	}, []);
 
-	TempNewInfoKeys = newInfoKeys.shift(0);
-	TempNewSpecsKeys = newSpecsKeys.shift(0);
-	TempNewAVKeys = newAVKeys.shift(0);
-	TempNewAutoKeys = newAutoKeys.shift(0);
-	TempNewElecPhysKeys = newElecPhysKeys.shift(0);
+	const deadVals = ['*', 'n/a', ''];
+	var newSpecsVals = [];
+	var newAVVals = [];
+	var newAutoVals = [];
+	var newElecPhysVals = [];
+
+	// Get good specs values by comparing to deadVals
+	newSpecsVals = specsArray.reduce(function (prev, value) {
+		var isDuplicate = false;
+		for (var i = 0; i < deadVals.length; i++) {
+			if (value === deadVals[i]) {
+				isDuplicate = true;
+				break;
+			}
+		}
+		if (!isDuplicate) {
+			prev.push(value);
+		}
+		return prev;
+	}, []);
+
+	// get good AV Values by comparing to deadVal
+
+	newAVVals = AVArray.reduce(function (prev, value) {
+		var isDuplicate = false;
+		for (var i = 0; i < deadVals.length; i++) {
+			if (value === deadVals[i]) {
+				isDuplicate = true;
+				break;
+			}
+		}
+		if (!isDuplicate) {
+			prev.push(value);
+		}
+		return prev;
+	}, []);
+
+	// Get good automation values by cmparing to deadVals
+
+	newAutoVals = autoArray.reduce(function (prev, value) {
+		var isDuplicate = false;
+		for (var i = 0; i < deadVals.length; i++) {
+			if (value === deadVals[i]) {
+				isDuplicate = true;
+				break;
+			}
+		}
+		if (!isDuplicate) {
+			prev.push(value);
+		}
+		return prev;
+	}, []);
+
+	// Get good ElecPhys values by comparing to deadVals
+
+	newElecPhysVals = elecPhysArray.reduce(function (prev, value) {
+		var isDuplicate = false;
+		for (var i = 0; i < deadVals.length; i++) {
+			if (value === deadVals[i]) {
+				isDuplicate = true;
+				break;
+			}
+		}
+		if (!isDuplicate) {
+			prev.push(value);
+		}
+		return prev;
+	}, []);
+
+	tempNewInfoKeys = newInfoKeys.shift(0);
+	tempNewSpecsKeys = newSpecsKeys.shift(0);
+	tempNewAVKeys = newAVKeys.shift(0);
+	tempNewAutoKeys = newAutoKeys.shift(0);
+	tempNewElecPhysKeys = newElecPhysKeys.shift(0);
 
 	// console.log(newElecPhysKeys);
-
-	var finalObj;
-	var finalInfo;
-	var finalSpecs;
-	var finalAV;
-	var finalAutomation;
-	var finalElecPhys;
 
 	// create the final object from each category to send
 	function select(arr, obj) {
@@ -258,44 +309,70 @@ router.get('/product-page/:product_code', async function (req, res) {
 		for (let k in obj) if (arr.includes(k)) finalObj[k] = obj[k];
 		return finalObj;
 	}
-	finalInfo = select(newInfoKeys, camInfo);
-	finalSpecs = select(newSpecsKeys, camSpecs);
-	finalAV = select(newAVKeys, audioVideo);
-	finalAutomation = select(newAutoKeys, automation);
-	finalElecPhys = select(newElecPhysKeys, elecPhys);
+	// finalInfo = select(newInfoKeys, camInfo);
 
-	// specsArray = Object.values(finalSpecs);
-	// specsArray = specsArray.filter((item) => !item.length < 1);
-	// specsArray = specsArray.slice(1, specsArray.length);
-	// finalSpecs.specsList = specsArray;
+	// finalInfo = camInfo;
+	// finalSpecs = select(newSpecsKeys, newSpecsVals);
+	// finalAV = select(newAVKeys, newAVVals);
+	// finalAutomation = select(newAutoKeys, newAutoVals);
+	// finalElecPhys = select(newElecPhysKeys, newElecPhysVals);
 
+	// var finalInfo = {};
+	var finalSpecs = {};
+	var finalAV = {};
+	var finalAutomation = {};
+	var finalElecPhys = {};
+
+	newSpecsKeys.forEach((element, index) => {
+		finalSpecs[element] = newSpecsVals[index];
+	});
+
+	newAVKeys.forEach((element, index) => {
+		finalAV[element] = newAVVals[index];
+	});
+
+	newAutoKeys.forEach((element, index) => {
+		finalAutomation[element] = newAutoVals[index];
+	});
+
+	newElecPhysKeys.forEach((element, index) => {
+		finalElecPhys[element] = newElecPhysVals[index];
+	});
+
+	var finalObj = {};
+	// finalObj.features = featuresArray;
+	finalObj.info = camInfo;
+	finalObj.specs = finalSpecs;
+	finalObj.av = finalAV;
+	finalObj.auto = finalAutomation;
+	finalObj.elecPhys = finalElecPhys;
+
+	var finalArr = [];
+	// finalArr.push(features);
+	finalArr.push(camInfo);
+	finalArr.push(finalSpecs);
+	finalArr.push(finalAV);
+	finalArr.push(finalAutomation);
+	finalArr.push(finalElecPhys);
 	// console.log(finalSpecs);
-	var finalObj;
-	finalObj = {
-		...finalInfo,
-		...finalSpecs,
-		...finalAV,
-		...finalAutomation,
-		...finalElecPhys
+	// res.render('product-page-copy', {
+	// 	dataArr: finalArr,
+	// 	dataObj: finalObj
+	// 	// features: features
+	// });
+	var data = {};
+	data = {
+		features: features,
+		dataObj: finalObj,
+		dataArr: finalArr
 	};
-	finalObj.newSpecsKeys = newSpecsKeys;
-	finalObj.newAVKeys = newAVKeys;
-	finalObj.newAutoKeys = newAutoKeys;
-	finalObj.newElecPhysKeys = newElecPhysKeys;
-
-	finalObj.info = finalInfo;
-	finalObj.featuresList = featuresArray;
-	finalObj.specs = specsArray;
-	finalObj.AV = AVArray;
-	finalObj.automation = autoArray;
-	finalObj.elecPhys = elecPhysArray;
-	// res.send(finalObj.newElecPhysKeys);
-	// res.send(newSpecsKeys);
-	// console.log(deadSpecsKeys);
-	// console.log();
-	// console.log(specsArray);
-	// console.log(finalObj.newElecPhysKeys);
-	res.render('product-page', { camInfo: finalObj });
+	data.product_code = finalObj.info.product_code;
+	// data.image_link =
+	res.render('product-page-copy', { data: data });
+	// res.send({ data: data });
+	// res.send({ features: features, dataObj: finalObj, dataArr: finalArr });
+	// res.send(finalArr);
+	// console.log(finalInfo);
 });
 
 module.exports = router;

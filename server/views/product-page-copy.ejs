@@ -246,7 +246,7 @@
 					</li>
 					<li class="list-item space">
 						<h4 class="heading-5"><span class="text-span-4">/</span>
-							<%= camInfo.product_code %>
+							<%= data.dataObj.info.product_code %>
 						</h4>
 					</li>
 				</ul>
@@ -256,21 +256,22 @@
 							<div role="list" class="w-dyn-items">
 								<div role="listitem" class="collection-item w-dyn-item">
 									<h1 class="product-name-h1">
-										<%= camInfo.product_name %>
+										<%= data.dataObj.info.product_name %>
 									</h1>
 									<h4 class="product-code-h4"></h4>
 									<div class="image-bullet-wrapper">
-										<img src="<%= camInfo.image_link %>" loading="lazy" width="345" height="345"
+										<img src="<%= data.dataObj.info.image_link %>" loading="lazy" width="345" height="345"
 											sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-											srcset="<%= camInfo.image_link %> 500w, <%= camInfo.image_link %> 505w" alt=""
+											srcset="<%= data.dataObj.info.image_link %> 500w, <%= data.dataObj.info.image_link %> 505w" alt=""
 											class="product-image" />
 										<div class="bullet-wrapper">
 											<ul role="list">
-												<% camInfo.featuresList.forEach( function ( item ) { %>
-													<li>
-														<%= item %>
-													</li>
-													<% }); %>
+												<% data.features.forEach(element => { %>
+												<li>
+													<%= element %> 
+												</li> 
+												 
+												<% }) %>
 											</ul>
 										</div>
 									</div>
@@ -327,91 +328,14 @@
 								</div>
 								<div data-w-tab="Specification" class="tab-2 w-tab-pane w--tab-active">
 									<div class="specs-container">
-										<div class="specs-wrapper">
-											<h4 class="specs-sub-heading">Camera Specs</h4>
-											<div class="specs-holder">
-												<div class="key-list specs-keys key-column specs-column">
-													<% camInfo.specsKeys.forEach(element=> { %> <div class="specs-text key-text">
-															<p>
-																<%= element %>&nbsp;:
-															</p>
-														</div>
-														<% }) %>
-												</div>
-												<div class="values-list specs-values val-column specs-column">
-													<% camInfo.specsVals.forEach(element=> { %> <div class="specs-text value-text">
-															<p>
-																<%= element %>
-															</p>
-														</div>
-														<% }) %>
-												</div>
-											</div>
-										</div>
-										<div class="specs-wrapper">
-											<h4 class="specs-sub-heading">Audio / Video</h4>
-											<div class="specs-holder">
-												<div class="key-list specs-keys key-column specs-column">
-													<% camInfo.aVKeys.forEach(element=> { %> <div class="specs-text key-text">
-															<p>
-																<%= element %>&nbsp;:
-															</p>
-														</div>
-														<% }) %>
-												</div>
-												<div class="values-list specs-values val-column specs-column">
-													<% camInfo.AV.forEach(element=> { %> <div class="specs-text value-text">
-															<p>
-																<%= element %>
-															</p>
-														</div>
-														<% }) %>
-												</div>
-											</div>
-										</div>
-										<div class="specs-wrapper">
-											<h4 class="specs-sub-heading">Automation & Event Detection</h4>
-											<div class="specs-holder">
-												<div class="key-list specs-keys key-column specs-column">
-													<% camInfo.autoKeys.forEach(element=> { %> <div class="specs-text key-text automation-keys">
-															<p>
-																<%= element %>&nbsp;:
-															</p>
-														</div>
-														<% }) %>
-												</div>
-												<div class="values-list specs-values val-column specs-column">
-													<% camInfo.automation.forEach(element=> { %> <div
-															class="specs-text automation-vals value-text">
-															<p>
-																<%= element %>
-															</p>
-														</div>
-														<% }) %>
-												</div>
-											</div>
-										</div>
-										<div class="specs-wrapper">
-											<h4 class="specs-sub-heading">Electrical / Physical</h4>
-											<div class="specs-holder">
-												<div class="key-list specs-keys key-column specs-column">
-													<% camInfo.elecPhysKeys.forEach(element=> { %> <div class="specs-text key-text phys-keys">
-															<p>
-																<%= element %>&nbsp;:
-															</p>
-														</div>
-														<% }) %>
-												</div>
-												<div class="values-list specs-values val-column specs-column">
-													<% camInfo.elecPhys.forEach(element=> { %> <div class="specs-text phys-vals value-text">
-															<p>
-																<%= element %>
-															</p>
-														</div>
-														<% }) %>
-												</div>
-											</div>
-										</div>
+										<table>
+											<tr>
+												<th>
+													<h4>Device Specifications </h4>
+												</th>
+												<th></th>
+											</tr>
+										</table>
 									</div>
 								</div>
 								<div data-w-tab="Images" class="tab-pane-tab-2 w-tab-pane">
