@@ -266,12 +266,10 @@
 											class="product-image" />
 										<div class="bullet-wrapper">
 											<ul role="list">
-												<% data.features.forEach(element => { %>
-												<li>
-													<%= element %> 
-												</li> 
-												 
-												<% }) %>
+												<% data.features.forEach(element=> { %> <li>
+														<%= element %>
+													</li>
+													<% }) %>
 											</ul>
 										</div>
 									</div>
@@ -328,13 +326,87 @@
 								</div>
 								<div data-w-tab="Specification" class="tab-2 w-tab-pane w--tab-active">
 									<div class="specs-container">
-										<table>
-											<tr>
-												<th>
-													<h4>Device Specifications </h4>
-												</th>
-												<th></th>
-											</tr>
+										<h4 class="specs-subheading">Device Specifications</h4>
+										<table class="spec-table">
+											<tbody>
+												<tr>
+													<% specsVal=Object.values(specs); %>
+														<% specs=Object.keys(specs); %>
+															<% for( let i=0; i < specs.length; i++ ) { %>
+												<tr class="spec-row">
+													<td class="key-data spec-keys">
+														<%= specs[i] %>
+													</td>
+													<td class="val-data spec-vals">
+														<%= specsVal[i] %>
+													</td>
+												</tr>
+												<% } %>
+													</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="specs-container">
+										<h4 class="specs-subheading">Audio Video Specifications</h4>
+										<table class="spec-table">
+											<tbody>
+												<tr>
+													<% avVal=Object.values(av); %>
+														<% av=Object.keys(av); %>
+															<% for( let i=0; i < av.length; i++ ) { %>
+												<tr class="spec-row">
+													<td class="key-data av-keys">
+														<%= av[i] %>
+													</td>
+													<td class="val-data av-vals">
+														<%= avVal[i] %>
+													</td>
+												</tr>
+												<% } %>
+													</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="specs-container">
+										<h4 class="specs-subheading">Automation & Event Detection</h4>
+										<table class="spec-table">
+											<tbody>
+												<tr>
+													<% autoVal=Object.values(auto); %>
+														<% auto=Object.keys(auto); %>
+															<% for( let i=0; i < auto.length; i++ ) { %>
+												<tr class="spec-row">
+													<td class="key-data auto-keys">
+														<%= auto[i] %>
+													</td>
+													<td class="val-data auto-vals">
+														<%= autoVal[i] %>
+													</td>
+												</tr>
+												<% } %>
+													</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="specs-container">
+										<h4 class="specs-subheading">Electrical / Physical Specifications</h4>
+										<table class="spec-table">
+											<tbody>
+												<tr>
+													<% elecPhysVal=Object.values(elecPhys); %>
+														<% elecPhys=Object.keys(elecPhys); %>
+															<% for( let i=0; i < elecPhys.length; i++ ) { %>
+												<tr class="spec-row">
+													<td class="key-data elec-keys">
+														<%= elecPhys[i] %>
+													</td>
+													<td class="val-data elec-vals">
+														<%= elecPhysVal[i] %>
+													</td>
+												</tr>
+												<% } %>
+													</tr>
+											</tbody>
 										</table>
 									</div>
 								</div>

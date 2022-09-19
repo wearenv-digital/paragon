@@ -38,8 +38,8 @@ router.get('/product-page/:product_code', async function (req, res) {
 	var audioVideo = await getAudioVideo(req);
 	var automation = await getAutomation(req);
 	var elecPhys = await getElecPhys(req);
-	console.log(typeof camFeatures);
-	console.log(camFeatures);
+	// console.log(typeof camFeatures);
+	// console.log(camFeatures);
 
 	function removeProdCode(arr) {
 		arr = arr.filter((item) => !item.length < 1);
@@ -51,8 +51,8 @@ router.get('/product-page/:product_code', async function (req, res) {
 	var AVArray = Object.values(audioVideo);
 	var autoArray = Object.values(automation);
 	var elecPhysArray = Object.values(elecPhys);
-	console.log(features);
-	console.log(typeof features);
+	// console.log(features);
+	// console.log(typeof features);
 
 	features = removeProdCode(features);
 	specsArray = removeProdCode(specsArray);
@@ -60,8 +60,8 @@ router.get('/product-page/:product_code', async function (req, res) {
 	autoArray = removeProdCode(autoArray);
 	elecPhysArray = removeProdCode(elecPhysArray);
 
-	console.log(typeof features);
-	console.log(features);
+	// console.log(typeof features);
+	// console.log(features);
 
 	// The arrays now do not have product code
 
@@ -368,7 +368,14 @@ router.get('/product-page/:product_code', async function (req, res) {
 	};
 	data.product_code = finalObj.info.product_code;
 	// data.image_link =
-	res.render('product-page-copy', { data: data });
+	res.render('product-page-copy', {
+		data: data,
+		specs: finalSpecs,
+		av: finalAV,
+		auto: finalAutomation,
+		elecPhys: finalElecPhys
+	});
+	console.log(finalSpecs);
 	// res.send({ data: data });
 	// res.send({ features: features, dataObj: finalObj, dataArr: finalArr });
 	// res.send(finalArr);
