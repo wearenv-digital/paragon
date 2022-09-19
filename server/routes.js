@@ -1,5 +1,4 @@
 var express = require('express');
-const { appendFile } = require('fs');
 var router = express.Router();
 const path = require('path');
 const {
@@ -31,9 +30,9 @@ router.get('/product-page-template-copy', (req, res) => {
 
 // main product-page route
 
-function removeEmpty(obj) {
-	return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
-}
+// function removeEmpty(obj) {
+// 	return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
+// }
 
 router.get('/product-page/:product_code', async function (req, res) {
 	var camInfo = await getInfo(req);
@@ -43,36 +42,37 @@ router.get('/product-page/:product_code', async function (req, res) {
 	var automation = await getAutomation(req);
 	var elecPhys = await getElecPhys(req);
 
-	function removeCode(arr, obj, name) {
+	function removeProdCode(arr, obj) {
 		arr = arr.filter((item) => !item.length < 1);
 		arr = arr.slice(1, arr.length);
-		obj.name = arr;
-		return obj;
+		return arr;
 	}
+	var infoArray = Object.values(camInfo);
 	var featuresArray = Object.values(camFeatures);
 	var specsArray = Object.values(camSpecs);
 	var AVArray = Object.values(audioVideo);
 	var autoArray = Object.values(automation);
-	var elecPhysArray = object.values(elecPhys);
+	var elecPhysArray = Object.values(elecPhys);
 
+	featuresArray = removeProdCode(featuresArray, camFeatures);
+	specsArray = removeProdCode(specsArray, camSpecs);
+	AVArray = removeProdCode(AVArray, audioVideo);
+	autoArray = removeProdCode(autoArray, automation);
+	elecPhysArray = removeProdCode(elecPhysArray, elecPhys);
+
+	// camFeatures.featuresList = featuresArray;
+	camSpecs.specsList = specsArray;
+	audioVideo.avList = AVArray;
+	automation.autoSpecsList = autoArray;
+	elecPhys.elecPhysList = elecPhysArray;
 
 	// filter and mutate the array to omit any empties and the first element
-	featuresArray = featuresArray.filter((item) => !item.length < 1);
-	featuresArray = featuresArray.slice(1, featuresArray.length);
-	camInfo.featuresList = featuresArray;
+	// featuresArray = featuresArray.filter((item) => !item.length < 1);
+	// featuresArray = featuresArray.slice(1, featuresArray.length);
+	// camInfo.featuresList = featuresArray;
 
-	
 	// camInfo is now the full list
-	
-	
-	var fullListObj = {};
-	fullListObj = {
-		...camInfo,
-		...camSpecs,
-		...audioVideo,
-		...automation,
-		...elecPhys
-	};
+
 	var deadKeys;
 	var allKeys;
 
@@ -244,7 +244,6 @@ router.get('/product-page/:product_code', async function (req, res) {
 		for (let k in obj) if (arr.includes(k)) finalObj[k] = obj[k];
 		return finalObj;
 	}
-
 	finalInfo = select(newInfoKeys, camInfo);
 	finalSpecs = select(newSpecsKeys, camSpecs);
 	finalAV = select(newAVKeys, audioVideo);
@@ -267,16 +266,13 @@ router.get('/product-page/:product_code', async function (req, res) {
 	};
 
 	finalObj.info = finalInfo;
-	finalObj.specs = finalSpecs;
-	finalObj.AV = finalAV;
-	finalObj.automation = finalAutomation;
-	finalObj.elecPhys = finalElecPhys;
-	// finalObj = select(newKeys, fullListObj);
-	// send the finalObject to the view for rendering and processing
-	res.send(finalObj);
-	// res.render('product-page', {
-	// 	camInfo: finalObj
-	// });
+	finalObj.featuresList = featuresArray;
+	finalObj.specs = specsArray;
+	finalObj.AV = AVArray;
+	finalObj.automation = autoArray;
+	finalObj.elecPhys = elecPhysArray;
+	// res.send(finalObj.elecPhys);
+	res.render('product-page', { camInfo: finalObj });
 });
 
 module.exports = router;
