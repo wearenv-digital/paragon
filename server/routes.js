@@ -60,11 +60,13 @@ router.get('/product-page/:product_code', async function (req, res) {
 	autoArray = removeProdCode(autoArray, automation);
 	elecPhysArray = removeProdCode(elecPhysArray, elecPhys);
 
+	// The arrays now do not have product code
+
 	// camFeatures.featuresList = featuresArray;
-	camSpecs.specsList = specsArray;
-	audioVideo.avList = AVArray;
-	automation.autoSpecsList = autoArray;
-	elecPhys.elecPhysList = elecPhysArray;
+	// camSpecs.specsList = specsArray;
+	// audioVideo.avList = AVArray;
+	// automation.autoSpecsList = autoArray;
+	// elecPhys.elecPhysList = elecPhysArray;
 
 	// filter and mutate the array to omit any empties and the first element
 	// featuresArray = featuresArray.filter((item) => !item.length < 1);
@@ -89,6 +91,12 @@ router.get('/product-page/:product_code', async function (req, res) {
 		return deadKeys;
 	}
 
+	function filterGoodKeys(obj) {
+		goodKeys = Object.keys(obj).filter(
+			(k) => obj[k] !== 'n/a' || obj[k] !== '*' || obj[k] !== ''
+		);
+		return goodKeys;
+	}
 	// deadKeys = Object.keys(fullListObj).filter(
 	// 	(k) =>
 	// 		fullListObj[k] === 'n/a' || fullListObj[k] === '*' || fullListObj[k] === ''
@@ -101,22 +109,22 @@ router.get('/product-page/:product_code', async function (req, res) {
 		return allKeys;
 	}
 
-	function checkDupes(allkeys, deadKeys) {
-		let newKeys;
-		newKeys = allKeys.reduce(function (prev, value) {
-			var isDuplicate = false;
-			for (var i = 0; i < deadKeys.length; i++) {
-				if (value === deadKeys[i]) {
-					isDuplicate = true;
-					break;
-				}
-			}
-			if (!isDuplicate) {
-				prev.push(value);
-			}
-			return prev;
-		}, []);
-	}
+	// function checkDupes(allkeys, deadKeys) {
+	// 	let newKeys;
+	// 	newKeys = allKeys.reduce(function (prev, value) {
+	// 		var isDuplicate = false;
+	// 		for (var i = 0; i < deadKeys.length; i++) {
+	// 			if (value === deadKeys[i]) {
+	// 				isDuplicate = true;
+	// 				break;
+	// 			}
+	// 		}
+	// 		if (!isDuplicate) {
+	// 			prev.push(value);
+	// 		}
+	// 		return prev;
+	// 	}, []);
+	// }
 
 	var deadInfoKeys;
 	var deadSpecsKeys;
@@ -229,6 +237,12 @@ router.get('/product-page/:product_code', async function (req, res) {
 		return prev;
 	}, []);
 
+	TempNewInfoKeys = newInfoKeys.shift(0);
+	TempNewSpecsKeys = newSpecsKeys.shift(0);
+	TempNewAVKeys = newAVKeys.shift(0);
+	TempNewAutoKeys = newAutoKeys.shift(0);
+	TempNewElecPhysKeys = newElecPhysKeys.shift(0);
+
 	// console.log(newElecPhysKeys);
 
 	var finalObj;
@@ -255,7 +269,7 @@ router.get('/product-page/:product_code', async function (req, res) {
 	// specsArray = specsArray.slice(1, specsArray.length);
 	// finalSpecs.specsList = specsArray;
 
-	console.log(finalSpecs);
+	// console.log(finalSpecs);
 	var finalObj;
 	finalObj = {
 		...finalInfo,
@@ -264,6 +278,10 @@ router.get('/product-page/:product_code', async function (req, res) {
 		...finalAutomation,
 		...finalElecPhys
 	};
+	finalObj.newSpecsKeys = newSpecsKeys;
+	finalObj.newAVKeys = newAVKeys;
+	finalObj.newAutoKeys = newAutoKeys;
+	finalObj.newElecPhysKeys = newElecPhysKeys;
 
 	finalObj.info = finalInfo;
 	finalObj.featuresList = featuresArray;
@@ -271,7 +289,12 @@ router.get('/product-page/:product_code', async function (req, res) {
 	finalObj.AV = AVArray;
 	finalObj.automation = autoArray;
 	finalObj.elecPhys = elecPhysArray;
-	// res.send(finalObj.elecPhys);
+	// res.send(finalObj.newElecPhysKeys);
+	// res.send(newSpecsKeys);
+	// console.log(deadSpecsKeys);
+	// console.log();
+	// console.log(specsArray);
+	// console.log(finalObj.newElecPhysKeys);
 	res.render('product-page', { camInfo: finalObj });
 });
 
