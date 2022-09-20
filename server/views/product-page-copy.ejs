@@ -260,10 +260,14 @@
 									</h1>
 									<h4 class="product-code-h4"></h4>
 									<div class="image-bullet-wrapper">
-										<img src="<%= data.dataObj.info.image_link %>" loading="lazy" width="345" height="345"
-											sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-											srcset="<%= data.dataObj.info.image_link %> 500w, <%= data.dataObj.info.image_link %> 505w" alt=""
-											class="product-image" />
+										<div class="image-frame" id="main-product-image">
+											<span class="helper-frame">
+												<img src="<%= data.dataObj.info.image_link %>" loading="lazy" width="345" height="345"
+													sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+													srcset="<%= data.dataObj.info.image_link %> 500w, <%= data.dataObj.info.image_link %> 505w"
+													alt="" class="product-image main-product-img" />
+											</span>
+										</div>
 										<div class="bullet-wrapper">
 											<ul role="list">
 												<% data.features.forEach(element=> { %> <li>
@@ -323,12 +327,30 @@
 							</div>
 							<div class="tabs-content w-tab-content">
 								<div data-w-tab="Description" class="tab-pane-tab-1 w-tab-pane">
+									<div class="description-heading">
+										<h3 class="desc-heading">
+											<%= data.dataObj.info.product_name %>
+												<br>
+										</h3>
+										<h4>
+											<%= data.dataObj.info.product_code %>
+										</h4>
+										<div class="description-content">
+											<p>
+												<%= description %>
+											</p>
+										</div>
+									</div>
 								</div>
 								<div data-w-tab="Specification" class="tab-2 w-tab-pane w--tab-active">
 									<div class="specs-container">
-										<h4 class="specs-subheading">Device Specifications</h4>
 										<table class="spec-table">
 											<tbody>
+												<tr>
+													<th>
+														<h4 class="specs-subheading">Device Specifications</h4>
+													</th>
+												</tr>
 												<tr>
 													<% specsVal=Object.values(specs); %>
 														<% specs=Object.keys(specs); %>
@@ -343,69 +365,61 @@
 												</tr>
 												<% } %>
 													</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="specs-container">
-										<h4 class="specs-subheading">Audio Video Specifications</h4>
-										<table class="spec-table">
-											<tbody>
-												<tr>
-													<% avVal=Object.values(av); %>
-														<% av=Object.keys(av); %>
-															<% for( let i=0; i < av.length; i++ ) { %>
-												<tr class="spec-row">
-													<td class="key-data av-keys">
-														<%= av[i] %>
-													</td>
-													<td class="val-data av-vals">
-														<%= avVal[i] %>
-													</td>
-												</tr>
-												<% } %>
+													<tr>
+														<th>
+															<h4 class="specs-subheading">Audio Video Specifications</h4>
+														</th>
 													</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="specs-container">
-										<h4 class="specs-subheading">Automation & Event Detection</h4>
-										<table class="spec-table">
-											<tbody>
-												<tr>
-													<% autoVal=Object.values(auto); %>
-														<% auto=Object.keys(auto); %>
-															<% for( let i=0; i < auto.length; i++ ) { %>
-												<tr class="spec-row">
-													<td class="key-data auto-keys">
-														<%= auto[i] %>
-													</td>
-													<td class="val-data auto-vals">
-														<%= autoVal[i] %>
-													</td>
-												</tr>
-												<% } %>
+													<tr>
+														<% avVal=Object.values(av); %>
+															<% av=Object.keys(av); %>
+																<% for( let i=0; i < av.length; i++ ) { %>
+													<tr class="spec-row">
+														<td class="key-data av-keys">
+															<%= av[i] %>
+														</td>
+														<td class="val-data av-vals">
+															<%= avVal[i] %>
+														</td>
 													</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="specs-container">
-										<h4 class="specs-subheading">Electrical / Physical Specifications</h4>
-										<table class="spec-table">
-											<tbody>
-												<tr>
-													<% elecPhysVal=Object.values(elecPhys); %>
-														<% elecPhys=Object.keys(elecPhys); %>
-															<% for( let i=0; i < elecPhys.length; i++ ) { %>
-												<tr class="spec-row">
-													<td class="key-data elec-keys">
-														<%= elecPhys[i] %>
-													</td>
-													<td class="val-data elec-vals">
-														<%= elecPhysVal[i] %>
-													</td>
-												</tr>
-												<% } %>
-													</tr>
+													<% } %>
+														<tr>
+															<th>
+																<h4 class="specs-subheading">Automation & Event Detection</h4>
+															</th>
+														</tr>
+														<tr>
+															<% autoVal=Object.values(auto); %>
+																<% auto=Object.keys(auto); %>
+																	<% for( let i=0; i < auto.length; i++ ) { %>
+														<tr class="spec-row">
+															<td class="key-data auto-keys">
+																<%= auto[i] %>
+															</td>
+															<td class="val-data auto-vals">
+																<%= autoVal[i] %>
+															</td>
+														</tr>
+														<% } %>
+															<tr>
+																<th>
+																	<h4 class="specs-subheading">Electrical / Physical Specifications</h4>
+																</th>
+															</tr>
+															<tr>
+																<% elecPhysVal=Object.values(elecPhys); %>
+																	<% elecPhys=Object.keys(elecPhys); %>
+																		<% for( let i=0; i < elecPhys.length; i++ ) { %>
+															<tr class="spec-row">
+																<td class="key-data elec-keys">
+																	<%= elecPhys[i] %>
+																</td>
+																<td class="val-data elec-vals">
+																	<%= elecPhysVal[i] %>
+																</td>
+															</tr>
+															<% } %>
+																</tr>
 											</tbody>
 										</table>
 									</div>
@@ -414,28 +428,48 @@
 									<h3 class="heading-11">Images</h3>
 									<div class="gallery-wrapper">
 										<div id="w-node-bb445dc3-3323-edee-e039-527b8590d68d-d3243517" class="gallery-grid">
-											<img loading="lazy" id="w-node-bb445dc3-3323-edee-e039-527b8590d68e-d3243517"
-												src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a2a3312aae1_placeholder%203.svg"
-												alt="" class="gallery-image shadow-two" /><img loading="lazy"
-												id="w-node-bb445dc3-3323-edee-e039-527b8590d68f-d3243517"
-												src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a28a812aad9_placeholder%202.svg"
-												alt="" class="gallery-image shadow-two" />
+											<% if(data.dataObj.info.image_link ) { %>
+												<img src="<%= data.dataObj.info.image_link %>" loading="lazy" width="345" height="345"
+													sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+													srcset="<%= data.dataObj.info.image_link %> 500w, <%= data.dataObj.info.image_link %> 505w"
+													alt="" class="product-image main-product-img" />
+												<% }%>
+													<% if(data.dataObj.info.image_link_2 ) { %>
+														<img src="<%= data.dataObj.info.image_link_2 %>" loading="lazy" width="345" height="345"
+															sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+															srcset="<%= data.dataObj.info.image_link_2 %> 500w, <%= data.dataObj.info.image_link_2 %> 505w"
+															alt="" class="product-image main-product-img" />
+														<% }%>
+															<% if(data.dataObj.info.technical_image ) { %>
+																<img src="<%= data.dataObj.info.technical_image %>" loading="lazy" width="345"
+																	height="345" sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+																	srcset="<%= data.dataObj.info.technical_image %> 500w, <%= data.dataObj.info.technical_image %> 505w"
+																	alt="" class="product-image main-product-img" />
+																<% }%>
 										</div>
 										<div class="gallery-grid">
-											<img loading="lazy" id="w-node-_576bb91f-a610-f262-940c-1f886d212a92-d3243517"
-												src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a2a3312aae1_placeholder%203.svg"
-												alt="" class="gallery-image shadow-two" /><img loading="lazy"
-												id="w-node-_576bb91f-a610-f262-940c-1f886d212a93-d3243517"
-												src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a28a812aad9_placeholder%202.svg"
-												alt="" class="gallery-image shadow-two" />
+											<% if(data.dataObj.info.technical_image_2 ) { %>
+												<img src="<%= data.dataObj.info.technical_image_2 %>" loading="lazy" width="345" height="345"
+													sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+													srcset="<%= data.dataObj.info.technical_image_2 %> 500w, <%= data.dataObj.info.technical_image_2 %> 505w"
+													alt="" class="product-image main-product-img" />
+												<% }%>
+													<% if(data.dataObj.info.technical_image_3 ) { %>
+														<img src="<%= data.dataObj.info.technical_image_3 %>" loading="lazy" width="345"
+															height="345" sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+															srcset="<%= data.dataObj.info.technical_image_3 %> 500w, <%= data.dataObj.info.technical_image_3 %> 505w"
+															alt="" class="product-image main-product-img" />
+														<% }%>
 										</div>
 									</div>
-									<div class="gallery-wrapper video">
-										<div class="div-block-9">
-											<h3 class="heading-11">Videos</h3>
-											<div class="w-video w-embed"></div>
+									<% if(data.dataObj.info.video) { %>
+										<div class="gallery-wrapper video">
+											<div class="div-block-9">
+												<h3 class="heading-11">Videos</h3>
+												<div class="w-video w-embed"></div>
+											</div>
 										</div>
-									</div>
+										<% } %>
 								</div>
 								<div data-w-tab="Links &amp; downloads" class="tab-pane-links-downloads w-tab-pane">
 									<div class="div-block-10">

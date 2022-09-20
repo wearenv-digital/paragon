@@ -118,9 +118,25 @@ async function getElecPhys(req) {
 	return result;
 }
 
+async function getDesc(req) {
+	var connection = await util.promisify(mysqlConf.getConnection.bind(mysqlConf))();
+	console.log(`connected as id ${connection.threadId}`);
+	var rows = await util.promisify(connection.query.bind(connection))(
+		'SELECT description from cam_info WHERE product_code =?',
+		[req.params.product_code]
+	);
+	connection.release();
+	var result;
+	Object.keys(rows).forEach(function (key) {
+		result = rows[key];
+	});
+	return result;
+}
+
 exports.getInfo = getInfo;
 exports.getFeatures = getFeatures;
 exports.getCamSpecs = getCamSpecs;
 exports.getAudioVideo = getAudioVideo;
 exports.getAutomation = getAutomation;
 exports.getElecPhys = getElecPhys;
+exports.getDesc = getDesc;
