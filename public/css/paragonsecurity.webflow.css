@@ -3348,7 +3348,10 @@
 	min-width: 50px;
 }
 
+
+
 .specs-container {
+
 	border: 1px none #000;
 	width: 80%;
 	max-width: 99%;
@@ -3356,71 +3359,35 @@
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	flex-direction: column;
-	padding: 0, 100, 0, 100 px;
-	gap: 20px;
+	padding: 0, 100, 0, 100px;
+	padding-left: 100px;
+
+	/* align-items: center; */
 }
 
-.specs-wrapper {
-	width: 100%;
-	min-width: 480px;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	min-height: none;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	-ms-flex-direction: row;
-	flex-direction: column;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
+
+
+h4.specs-subheading {
+	padding-top: 16px;
 }
 
-.specs-holder {
-	width: 100%;
-	min-width: 200px;
-	display: flex;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	flex-direction: row;
-	justify-content: space-between;
-
+.spec-row {
+	height: 1.2em;
 }
 
-.key-column {
-	width: 40%;
+td.key-data {
+	min-width: 300px !important;
+	max-width: 300px !important;
 }
 
-.val-column {
-	width: 60%
+td.key-data.av-keys {
+	max-width: 300px !important;
 }
 
-.specs-list {
-	width: 50%;
-	padding-right: 25px;
-	padding-left: 0px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: #fd0000;
-}
+td.key-data,
+td.val-data {
+	vertical-align: top;
 
-.key-text,
-.value-text {
-	display: flex;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	flex-direction: column;
-	/* border-bottom: 1px solid black; */
-	padding-left: 10px;
-	padding-top: 8px;
-
-}
-
-.automation-keys {
-	padding-bottom: 1em;
 }
 
 
@@ -3447,23 +3414,11 @@
 	width: 100%;
 }
 
-.spec-columns {
-	margin-top: 4px;
-	margin-bottom: 4px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	border-style: none none solid;
-	border-width: 0px 0px 2px 2px;
-	border-color: #000;
-}
 
 .heading-15 {
 	padding-left: 4px;
 }
 
-.spec-sub-heading {
-	padding-left: 4px;
-}
 
 html.w-mod-js *[data-ix="fade-on-load-1"] {
 	opacity: 0;
