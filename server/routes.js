@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 	res.sendFile(path.resolve('../public/index.html'));
 });
 
-router.get('/product-page-template-copy', (req, res) => {
+router.get('/product-page-template', (req, res) => {
 	res.sendFile(path.resolve('../public/product-page-template-copy.html'));
 });
 
