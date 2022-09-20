@@ -42,20 +42,20 @@
 		<div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
 			role="banner" class="nav-bar w-nav">
 			<nav role="navigation" class="nav-right-2 w-nav-menu">
-				<a href="index.html" class="brand-div w-nav-brand"><img src="images/Screenshot-2022-08-31-at-11.59.56.png"
-						width="150"
-						srcset="images/Screenshot-2022-08-31-at-11.59.56-p-500.png 500w, images/Screenshot-2022-08-31-at-11.59.56.png 562w"
+				<a href="index.html" class="brand-div w-nav-brand"><img
+						src="../../public/images/Screenshot-2022-08-31-at-11.59.56.png" width="150"
+						srcset="../../public/images/Screenshot-2022-08-31-at-11.59.56-p-500.png 500w, ../../images/Screenshot-2022-08-31-at-11.59.56.png 562w"
 						sizes="(max-width: 991px) 100vw, 150px" alt="" class="image" data-ix="fade-on-load-1" /></a>
 				<div class="div-block-5">
 					<div class="div-block-60">
 						<img src="../../public/images/imageedit_1_3016345560.png" loading="lazy"
-							srcset="images/imageedit_1_3016345560-p-500.png 500w, images/imageedit_1_3016345560.png 600w"
+							srcset="../../public/images/imageedit_1_3016345560-p-500.png 500w, images/imageedit_1_3016345560.png 600w"
 							sizes="(max-width: 991px) 100vw, 25px" alt="" class="image-10" />
 						<a href="tel:+44(0)1245280448" class="nav-link w-nav-link" data-ix="fade-on-load-1">+44 (0)1245 280 448</a>
 					</div>
 					<div class="div-block-59">
 						<img src="../../public/images/imageedit_7_8668715118.png" loading="lazy"
-							srcset="images/imageedit_7_8668715118-p-500.png 500w, images/imageedit_7_8668715118.png 600w"
+							srcset="../../public/images/imageedit_7_8668715118-p-500.png 500w, ../../images/imageedit_7_8668715118.png 600w"
 							sizes="(max-width: 991px) 100vw, 25px" alt="" class="image-10" />
 						<a href="mailto:info@paragon-security.com?subject=Website%20Enquiry" class="nav-link w-nav-link"
 							data-ix="fade-on-load-1">info@paragon-security.com</a>
@@ -246,7 +246,7 @@
 					</li>
 					<li class="list-item space">
 						<h4 class="heading-5"><span class="text-span-4">/</span>
-							<%= camInfo.product_code %>
+							<%= data.dataObj.info.product_code %>
 						</h4>
 					</li>
 				</ul>
@@ -256,21 +256,20 @@
 							<div role="list" class="w-dyn-items">
 								<div role="listitem" class="collection-item w-dyn-item">
 									<h1 class="product-name-h1">
-										<%= camInfo.product_name %>
+										<%= data.dataObj.info.product_name %>
 									</h1>
 									<h4 class="product-code-h4"></h4>
 									<div class="image-bullet-wrapper">
-										<img src="<%= camInfo.image_link %>" loading="lazy" width="345" height="345"
+										<img src="<%= data.dataObj.info.image_link %>" loading="lazy" width="345" height="345"
 											sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-											srcset="<%= camInfo.image_link %> 500w, <%= camInfo.image_link %> 505w" alt=""
+											srcset="<%= data.dataObj.info.image_link %> 500w, <%= data.dataObj.info.image_link %> 505w" alt=""
 											class="product-image" />
 										<div class="bullet-wrapper">
-											<ul role="list">
-												<% camInfo.featuresList.forEach( function ( item ) { %>
-													<li>
-														<%= item %>
+											<ul class="ft-list" role="list">
+												<% data.features.forEach(element=> { %> <li class="ft-element">
+														<%= element %>
 													</li>
-													<% }); %>
+													<% }) %>
 											</ul>
 										</div>
 									</div>
@@ -324,154 +323,183 @@
 							</div>
 							<div class="tabs-content w-tab-content">
 								<div data-w-tab="Description" class="tab-pane-tab-1 w-tab-pane">
+									<div class="description-heading">
+										<h3 class="desc-heading">
+											<%= data.dataObj.info.product_name %>
+												<br>
+										</h3>
+										<h4>
+											<%= data.dataObj.info.product_code %>
+										</h4>
+										<div class="description-content">
+											<p>
+												<%= description %>
+											</p>
+										</div>
+									</div>
 								</div>
 								<div data-w-tab="Specification" class="tab-2 w-tab-pane w--tab-active">
 									<div class="specs-container">
-										<div class="specs-wrapper">
-											<h4 class="specs-sub-heading">Camera Specs</h4>
-											<div class="specs-holder">
-												<div class="key-list specs-keys key-column specs-column">
-													<% camInfo.specsKeys.forEach(element=> { %> <div class="specs-text key-text">
-															<p>
-																<%= element %>&nbsp;:
-															</p>
-														</div>
-														<% }) %>
-												</div>
-												<div class="values-list specs-values val-column specs-column">
-													<% camInfo.specsVals.forEach(element=> { %> <div class="specs-text value-text">
-															<p>
-																<%= element %>
-															</p>
-														</div>
-														<% }) %>
-												</div>
-											</div>
-										</div>
-										<div class="specs-wrapper">
-											<h4 class="specs-sub-heading">Audio / Video</h4>
-											<div class="specs-holder">
-												<div class="key-list specs-keys key-column specs-column">
-													<% camInfo.aVKeys.forEach(element=> { %> <div class="specs-text key-text">
-															<p>
-																<%= element %>&nbsp;:
-															</p>
-														</div>
-														<% }) %>
-												</div>
-												<div class="values-list specs-values val-column specs-column">
-													<% camInfo.AV.forEach(element=> { %> <div class="specs-text value-text">
-															<p>
-																<%= element %>
-															</p>
-														</div>
-														<% }) %>
-												</div>
-											</div>
-										</div>
-										<div class="specs-wrapper">
-											<h4 class="specs-sub-heading">Automation & Event Detection</h4>
-											<div class="specs-holder">
-												<div class="key-list specs-keys key-column specs-column">
-													<% camInfo.autoKeys.forEach(element=> { %> <div class="specs-text key-text automation-keys">
-															<p>
-																<%= element %>&nbsp;:
-															</p>
-														</div>
-														<% }) %>
-												</div>
-												<div class="values-list specs-values val-column specs-column">
-													<% camInfo.automation.forEach(element=> { %> <div
-															class="specs-text automation-vals value-text">
-															<p>
-																<%= element %>
-															</p>
-														</div>
-														<% }) %>
-												</div>
-											</div>
-										</div>
-										<div class="specs-wrapper">
-											<h4 class="specs-sub-heading">Electrical / Physical</h4>
-											<div class="specs-holder">
-												<div class="key-list specs-keys key-column specs-column">
-													<% camInfo.elecPhysKeys.forEach(element=> { %> <div class="specs-text key-text phys-keys">
-															<p>
-																<%= element %>&nbsp;:
-															</p>
-														</div>
-														<% }) %>
-												</div>
-												<div class="values-list specs-values val-column specs-column">
-													<% camInfo.elecPhys.forEach(element=> { %> <div class="specs-text phys-vals value-text">
-															<p>
-																<%= element %>
-															</p>
-														</div>
-														<% }) %>
-												</div>
-											</div>
-										</div>
+										<table class="spec-table">
+											<tbody>
+												<tr>
+													<th>
+														<h4 class="specs-subheading">Device Specifications</h4>
+													</th>
+												</tr>
+												<tr>
+													<% specsVal=Object.values(specs); %>
+														<% specs=Object.keys(specs); %>
+															<% for( let i=0; i < specs.length; i++ ) { %>
+												<tr class="spec-row">
+													<td class="key-data spec-keys">
+														<%= specs[i] %>
+													</td>
+													<td class="val-data spec-vals">
+														<%= specsVal[i] %>
+													</td>
+												</tr>
+												<% } %>
+													</tr>
+													<tr>
+														<th>
+															<h4 class="specs-subheading">Audio Video Specifications</h4>
+														</th>
+													</tr>
+													<tr>
+														<% avVal=Object.values(av); %>
+															<% av=Object.keys(av); %>
+																<% for( let i=0; i < av.length; i++ ) { %>
+													<tr class="spec-row">
+														<td class="key-data av-keys">
+															<%= av[i] %>
+														</td>
+														<td class="val-data av-vals">
+															<%= avVal[i] %>
+														</td>
+													</tr>
+													<% } %>
+														<tr>
+															<th>
+																<h4 class="specs-subheading">Automation & Event Detection</h4>
+															</th>
+														</tr>
+														<tr>
+															<% autoVal=Object.values(auto); %>
+																<% auto=Object.keys(auto); %>
+																	<% for( let i=0; i < auto.length; i++ ) { %>
+														<tr class="spec-row">
+															<td class="key-data auto-keys">
+																<%= auto[i] %>
+															</td>
+															<td class="val-data auto-vals">
+																<%= autoVal[i] %>
+															</td>
+														</tr>
+														<% } %>
+															<tr>
+																<th>
+																	<h4 class="specs-subheading">Electrical / Physical Specifications</h4>
+																</th>
+															</tr>
+															<tr>
+																<% elecPhysVal=Object.values(elecPhys); %>
+																	<% elecPhys=Object.keys(elecPhys); %>
+																		<% for( let i=0; i < elecPhys.length; i++ ) { %>
+															<tr class="spec-row">
+																<td class="key-data elec-keys">
+																	<%= elecPhys[i] %>
+																</td>
+																<td class="val-data elec-vals">
+																	<%= elecPhysVal[i] %>
+																</td>
+															</tr>
+															<% } %>
+																</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 								<div data-w-tab="Images" class="tab-pane-tab-2 w-tab-pane">
 									<h3 class="heading-11">Images</h3>
 									<div class="gallery-wrapper">
 										<div id="w-node-bb445dc3-3323-edee-e039-527b8590d68d-d3243517" class="gallery-grid">
-											<img loading="lazy" id="w-node-bb445dc3-3323-edee-e039-527b8590d68e-d3243517"
-												src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a2a3312aae1_placeholder%203.svg"
-												alt="" class="gallery-image shadow-two" /><img loading="lazy"
-												id="w-node-bb445dc3-3323-edee-e039-527b8590d68f-d3243517"
-												src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a28a812aad9_placeholder%202.svg"
-												alt="" class="gallery-image shadow-two" />
+											<% if(data.dataObj.info.image_link ) { %>
+												<img src="<%= data.dataObj.info.image_link %>" loading="lazy" width="345" height="345"
+													sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+													srcset="<%= data.dataObj.info.image_link %> 500w, <%= data.dataObj.info.image_link %> 505w"
+													alt="" class="product-image main-product-img" />
+												<% }%>
+													<% if(data.dataObj.info.image_link_2 ) { %>
+														<img src="<%= data.dataObj.info.image_link_2 %>" loading="lazy" width="345" height="345"
+															sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+															srcset="<%= data.dataObj.info.image_link_2 %> 500w, <%= data.dataObj.info.image_link_2 %> 505w"
+															alt="" class="product-image main-product-img" />
+														<% }%>
+															<% if(data.dataObj.info.technical_image ) { %>
+																<img src="<%= data.dataObj.info.technical_image %>" loading="lazy" width="345"
+																	height="345" sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+																	srcset="<%= data.dataObj.info.technical_image %> 500w, <%= data.dataObj.info.technical_image %> 505w"
+																	alt="" class="product-image main-product-img" />
+																<% }%>
 										</div>
 										<div class="gallery-grid">
-											<img loading="lazy" id="w-node-_576bb91f-a610-f262-940c-1f886d212a92-d3243517"
-												src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a2a3312aae1_placeholder%203.svg"
-												alt="" class="gallery-image shadow-two" /><img loading="lazy"
-												id="w-node-_576bb91f-a610-f262-940c-1f886d212a93-d3243517"
-												src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a28a812aad9_placeholder%202.svg"
-												alt="" class="gallery-image shadow-two" />
+											<% if(data.dataObj.info.technical_image_2 ) { %>
+												<img src="<%= data.dataObj.info.technical_image_2 %>" loading="lazy" width="345" height="345"
+													sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+													srcset="<%= data.dataObj.info.technical_image_2 %> 500w, <%= data.dataObj.info.technical_image_2 %> 505w"
+													alt="" class="product-image main-product-img" />
+												<% }%>
+													<% if(data.dataObj.info.technical_image_3 ) { %>
+														<img src="<%= data.dataObj.info.technical_image_3 %>" loading="lazy" width="345"
+															height="345" sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
+															srcset="<%= data.dataObj.info.technical_image_3 %> 500w, <%= data.dataObj.info.technical_image_3 %> 505w"
+															alt="" class="product-image main-product-img" />
+														<% }%>
 										</div>
 									</div>
-									<div class="gallery-wrapper video">
-										<div class="div-block-9">
-											<h3 class="heading-11">Videos</h3>
-											<div class="w-video w-embed"></div>
+									<% if(data.dataObj.info.video) { %>
+										<div class="gallery-wrapper video">
+											<div class="div-block-9">
+												<h3 class="heading-11">Videos</h3>
+												<div class="w-video w-embed"></div>
+											</div>
 										</div>
-									</div>
+										<% } %>
 								</div>
-								<div data-w-tab="Links &amp; downloads" class="tab-pane-links-downloads w-tab-pane">
-									<div class="div-block-10">
-										<img loading="lazy" src="../../public/images/pdf-icon-png-2058.png" alt="" class="image-8" />
-										<h3 class="heading-12">Download Technical Datasheet</h3>
-									</div>
-									<a href="#" class="link-2">Click Here</a>
+							</div>
+						</div>
+						<div data-w-tab="Links &amp; downloads" class="tab-pane-links-downloads w-tab-pane">
+							<div class="div-block-10">
+								<img loading="lazy" src="../../public/images/pdf-icon-png-2058.png" alt="" class="image-8" />
+								<h3 class="heading-12">Download Technical Datasheet</h3>
+							</div>
+							<a href="#" class="link-2">Click Here</a>
+						</div>
+						<div data-w-tab="Quote" class="w-tab-pane">
+							<p class="paragraph-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
+								eros elementum tristique.</p>
+							<div class="w-form">
+								<form id="email-form" name="email-form" data-name="Email Form" method="get">
+									<label for="name">Name</label><input type="text" class="w-input" maxlength="256" name="name"
+										data-name="Name" placeholder="" id="name" /><label for="email">Email Address</label><input
+										type="email" class="w-input" maxlength="256" name="email" data-name="Email" placeholder=""
+										id="email" required="" /><input type="submit" data-wait="Please wait..." value="Submit"
+										class="w-button" />
+								</form>
+								<div class="w-form-done">
+									<div>Thank you! Your submission has been received!</div>
 								</div>
-								<div data-w-tab="Quote" class="w-tab-pane">
-									<p class="paragraph-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius
-										enim in eros elementum tristique.</p>
-									<div class="w-form">
-										<form id="email-form" name="email-form" data-name="Email Form" method="get">
-											<label for="name">Name</label><input type="text" class="w-input" maxlength="256" name="name"
-												data-name="Name" placeholder="" id="name" /><label for="email">Email Address</label><input
-												type="email" class="w-input" maxlength="256" name="email" data-name="Email" placeholder=""
-												id="email" required="" /><input type="submit" data-wait="Please wait..." value="Submit"
-												class="w-button" />
-										</form>
-										<div class="w-form-done">
-											<div>Thank you! Your submission has been received!</div>
-										</div>
-										<div class="w-form-fail">
-											<div>Oops! Something went wrong while submitting the form.</div>
-										</div>
-									</div>
+								<div class="w-form-fail">
+									<div>Oops! Something went wrong while submitting the form.</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		</div>
 		</div>
 		<div class="wf-section"></div>
 		<div class="footer-wrapper cc ugh">

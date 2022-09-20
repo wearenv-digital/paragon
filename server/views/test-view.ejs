@@ -8,8 +8,6 @@
 	</head>
 	<body>
 		<h1>test view</h1>
-		<br>
-		<br>
 		<div class="test-section">
 			<h4>data is...</h4>
 			<p>
@@ -18,16 +16,24 @@
 		</div>
 		<div>
 			<ul>
-				<% camInfo.featuresList.forEach(function(item){ %>
+				<% data.features.forEach(function(item){ %>
 					<li>
 						<%= item %>
 					</li>
 					<% }); %>
 			</ul>
 		</div>
-		<div>
-			<ul>
-			</ul>
-		</div>
 	</body>
 </html>
+<div class="bullet-wrapper">
+	<ul role="list">
+		<% data.features.forEach(element=> { %> <li>
+				<%= element %>
+			</li>
+			<% }) %>
+	</ul>
+</div>
+<% data.features.forEach(element=> { %> <li>
+		<%= element %>
+	</li>
+	<% }) %>

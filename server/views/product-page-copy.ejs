@@ -24,6 +24,7 @@
 		<link href="../../public/css/webflow.css" rel="stylesheet" type="text/css" />
 		<link href="../../public/css/paragonsecurity.webflow.css" rel="stylesheet" type="text/css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+		<script src="ejs.min.js"></script>
 		<script type="text/javascript">
 			WebFont.load({ google: { families: ['Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic'] } });
 		</script>
@@ -42,26 +43,24 @@
 		<div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
 			role="banner" class="nav-bar w-nav">
 			<nav role="navigation" class="nav-right-2 w-nav-menu">
-				<a href="index.html" class="brand-div w-nav-brand"><img src="images/Screenshot-2022-08-31-at-11.59.56.png"
-						width="150"
-						srcset="images/Screenshot-2022-08-31-at-11.59.56-p-500.png 500w, images/Screenshot-2022-08-31-at-11.59.56.png 562w"
-						sizes="(max-width: 991px) 100vw, 150px" alt="" class="image" data-ix="fade-on-load-1" /></a>
+				<a href="../../../public/index.html" aria-current="page" class="brand-div w-nav-brand w--current"><img
+						src="../../../public/images/PS-Logo_1-tight.png" width="150"
+						srcset="images/PS-Logo_1-tight-p-500.png 500w, images/PS-Logo_1-tight.png 746w"
+						sizes="(max-width: 991px) 100vw, 150px" alt="" class="image" data-ix="fade-on-load-1"></a>
 				<div class="div-block-5">
-					<div class="div-block-60">
-						<img src="../../public/images/imageedit_1_3016345560.png" loading="lazy"
-							srcset="images/imageedit_1_3016345560-p-500.png 500w, images/imageedit_1_3016345560.png 600w"
-							sizes="(max-width: 991px) 100vw, 25px" alt="" class="image-10" />
+					<div class="div-block-60"><img src="../../../public/images/imageedit_1_3016345560.png" loading="lazy"
+							srcset="../../../public/images/imageedit_1_3016345560-p-500.png 500w, ../../../images/imageedit_1_3016345560.png 600w"
+							sizes="100vw" alt="" class="image-10">
 						<a href="tel:+44(0)1245280448" class="nav-link w-nav-link" data-ix="fade-on-load-1">+44 (0)1245 280 448</a>
 					</div>
-					<div class="div-block-59">
-						<img src="../../public/images/imageedit_7_8668715118.png" loading="lazy"
-							srcset="images/imageedit_7_8668715118-p-500.png 500w, images/imageedit_7_8668715118.png 600w"
-							sizes="(max-width: 991px) 100vw, 25px" alt="" class="image-10" />
+					<div class="div-block-59"><img src="../../../public/images/imageedit_7_8668715118.png" loading="lazy"
+							srcset="../../../public/images/imageedit_7_8668715118-p-500.png 500w, ../../../images/imageedit_7_8668715118.png 600w"
+							sizes="100vw" alt="" class="image-10">
 						<a href="mailto:info@paragon-security.com?subject=Website%20Enquiry" class="nav-link w-nav-link"
 							data-ix="fade-on-load-1">info@paragon-security.com</a>
 					</div>
 				</div>
-				<a href="../../public/partners.html" class="cta-2 smaller w-button" data-ix="fade-on-load-1">Contact</a>
+				<a href="partners.html" class="cta-2 smaller w-button" data-ix="fade-on-load-1">Contact</a>
 			</nav>
 			<nav role="navigation" class="nav-right-2 links w-nav-menu">
 				<div class="div-block-62">
@@ -120,15 +119,13 @@
 							<a href="#" class="dropdown-link w-dropdown-link">Press</a>
 						</nav>
 					</div>
-					<a href="../../public/product-page-template.html" class="nav-link w-nav-link"
-						data-ix="fade-on-load-1">Product</a>
-					<a href="../../public/sell.html" class="nav-link w-nav-link" data-ix="fade-on-load-1">News</a>
+					<a href="product-page-template.html" class="nav-link w-nav-link" data-ix="fade-on-load-1">Product</a>
+					<a href="sell.html" class="nav-link w-nav-link" data-ix="fade-on-load-1">News</a>
 				</div>
 				<div class="div-block-4">
-					<form action="/search" class="search w-form">
-						<input type="search" class="search-input w-input" maxlength="256" name="query" placeholder="Search…"
-							id="search" required="" /><input type="submit" value="Go" class="search-button w-button" />
-					</form>
+					<form action="/search" class="search w-form"><input type="search" class="search-input w-input" maxlength="256"
+							name="query" placeholder="Search…" id="search" required=""><input type="submit" value="Go"
+							class="search-button w-button"></form>
 				</div>
 			</nav>
 			<div class="menu-button w-nav-button">
@@ -138,33 +135,31 @@
 		<div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
 			role="banner" class="scrolling-nav w-nav" data-ix="display-none">
 			<nav role="navigation" class="nav-right-2 w-nav-menu">
-				<a href="../../public/index.html" class="brand-div w-nav-brand"><img
-						src="images/Screenshot-2022-08-31-at-11.59.56.png" width="140"
-						srcset="images/Screenshot-2022-08-31-at-11.59.56-p-500.png 500w, images/Screenshot-2022-08-31-at-11.59.56.png 562w"
-						sizes="(max-width: 991px) 100vw, 140px" alt="" /></a>
+				<a href="../../../public/index.html" aria-current="page" class="brand-div w-nav-brand w--current"><img
+						src="../../../public/images/PS-Logo_1-tight.png" width="140"
+						srcset="../../../public/images/PS-Logo_1-tight-p-500.png 500w, ../../../images/PS-Logo_1-tight.png 746w"
+						sizes="100vw" alt=""></a>
 				<div class="contact-top-nav">
 					<div class="div-block-5">
-						<div class="div-block-60">
-							<img src="../../public/images/imageedit_1_3016345560.png" loading="lazy"
-								srcset="images/imageedit_1_3016345560-p-500.png 500w, images/imageedit_1_3016345560.png 600w"
-								sizes="(max-width: 991px) 100vw, 25px" alt="" class="image-10" />
+						<div class="div-block-60"><img src="../../../public/images/imageedit_1_3016345560.png" loading="lazy"
+								srcset="../../../public/images/imageedit_1_3016345560-p-500.png 500w, ../../../images/imageedit_1_3016345560.png 600w"
+								sizes="100vw" alt="" class="image-10">
 							<a href="tel:+44(0)1245280448" class="nav-link w-nav-link" data-ix="fade-on-load-1">+44 (0)1245 280
 								448</a>
 						</div>
-						<div class="div-block-59">
-							<img src="../../public/images/imageedit_7_8668715118.png" loading="lazy"
-								srcset="images/imageedit_7_8668715118-p-500.png 500w, images/imageedit_7_8668715118.png 600w"
-								sizes="(max-width: 991px) 100vw, 25px" alt="" class="image-10" />
+						<div class="div-block-59"><img src="../../../public/images/imageedit_7_8668715118.png" loading="lazy"
+								srcset="../../../public/images/imageedit_7_8668715118-p-500.png 500w, ../../../images/imageedit_7_8668715118.png 600w"
+								sizes="100vw" alt="" class="image-10">
 							<a href="mailto:info@paragon-security.com?subject=Website%20Enquiry" class="nav-link w-nav-link"
 								data-ix="fade-on-load-1">info@paragon-security.com</a>
 						</div>
 					</div>
-					<a href="../../public/partners.html" class="cta-2 smaller w-button" data-ix="fade-on-load-1">Contact</a>
+					<a href="partners.html" class="cta-2 smaller w-button" data-ix="fade-on-load-1">Contact</a>
 				</div>
 			</nav>
 			<nav role="navigation" class="nav-right-2 w-nav-menu">
 				<div class="div-block-62">
-					<a href="../../public/contact.html" class="nav-link w-nav-link" data-ix="fade-on-load-1">About</a>
+					<a href="contact.html" class="nav-link w-nav-link" data-ix="fade-on-load-1">About</a>
 					<div data-hover="false" data-delay="0" class="dropdown w-dropdown">
 						<div class="dropdown-toggle w-dropdown-toggle">
 							<div class="w-icon-dropdown-toggle"></div>
@@ -219,13 +214,12 @@
 							<a href="#" class="dropdown-link w-dropdown-link">Press</a>
 						</nav>
 					</div>
-					<a href="../../public/sell.html" class="nav-link w-nav-link" data-ix="fade-on-load-1">News</a>
+					<a href="sell.html" class="nav-link w-nav-link" data-ix="fade-on-load-1">News</a>
 				</div>
 				<div class="div-block-4">
-					<form action="/search" class="search w-form">
-						<input type="search" class="search-input w-input" maxlength="256" name="query" placeholder="Search…"
-							id="search" required="" /><input type="submit" value="Go" class="search-button w-button" />
-					</form>
+					<form action="/search" class="search w-form"><input type="search" class="search-input w-input" maxlength="256"
+							name="query" placeholder="Search…" id="search" required=""><input type="submit" value="Go"
+							class="search-button w-button"></form>
 				</div>
 			</nav>
 			<div class="menu-button w-nav-button">
@@ -270,7 +264,7 @@
 										</div>
 										<div class="bullet-wrapper">
 											<ul role="list">
-												<% data.features.forEach(element=> { %> <li>
+												<% data.features.forEach(element=> { %> <li class="ft-element">
 														<%= element %>
 													</li>
 													<% }) %>
@@ -337,7 +331,7 @@
 										</h4>
 										<div class="description-content">
 											<p>
-												<%= description %>
+												<!-- <%# description %> -->
 											</p>
 										</div>
 									</div>
@@ -678,14 +672,15 @@
 											" sizes="(max-width: 767px) 50px, (max-width: 991px) 5vw, 50px" alt="Facebook Icon Blue"
 											class="image-9" /></a>
 									<a href="https://www.facebook.com/profile.php?id=100082821927888"
-										class="link-block w-inline-block"><img src="images/pngwing.com-4.png" loading="lazy" alt=""
-											class="image-9" /></a>
+										class="link-block w-inline-block"><img src="../../public/images/pngwing.com-4.png" loading="lazy"
+											alt="" class="image-9" /></a>
 									<a href="https://www.facebook.com/profile.php?id=100082821927888"
-										class="link-block w-inline-block"><img src="images/pngwing.com-3.png" loading="lazy" alt=""
-											class="image-9" /></a>
+										class="link-block w-inline-block"><img src="../../public/images/pngwing.com-3.png" loading="lazy"
+											alt="" class="image-9" /></a>
 									<a href="https://www.linkedin.com/company/outsourced-credit-control-ltd/"
-										class="link-block linkedin w-inline-block"><img src="images/LinkedIn_icon_circle.svg.png"
-											loading="lazy" alt="Linkedin Icon blue" class="image-9" /></a>
+										class="link-block linkedin w-inline-block"><img
+											src="../../public/images/LinkedIn_icon_circle.svg.png" loading="lazy" alt="Linkedin Icon blue"
+											class="image-9" /></a>
 								</div>
 							</div>
 						</div>
