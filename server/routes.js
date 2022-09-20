@@ -344,19 +344,31 @@ router.get('/product-page/:product_code', async function (req, res) {
 	finalObj.auto = finalAutomation;
 	finalObj.elecPhys = finalElecPhys;
 
-	var finalArr = [];
+	var checkContent = [];
+	checkContent = [finalAV, finalAutomation, finalElecPhys];
+
+	for (let i = 0; i < checkContent.length; i++) {
+		if (checkContent[i] == '') {
+			checkContent.splice([i], 1);
+		}
+	}
+
+	console.log(checkContent);
+
+	var finalArr = [checkContent];
 	// finalArr.push(features);
-	finalArr.push(camInfo);
-	finalArr.push(finalSpecs);
-	finalArr.push(finalAV);
-	finalArr.push(finalAutomation);
-	finalArr.push(finalElecPhys);
+	// finalArr.push(camInfo);
+	// finalArr.push(finalSpecs);
+	// finalArr.push(finalAV);
+	// finalArr.push(finalAutomation);
+	// finalArr.push(finalElecPhys);
 	// console.log(finalSpecs);
 	// res.render('product-page-copy', {
 	// 	dataArr: finalArr,
 	// 	dataObj: finalObj
 	// 	// features: features
 	// });
+
 	description = Object.values(description);
 	// console.log(typeof description);
 	var data = {};
@@ -395,7 +407,17 @@ router.get('/product-page/:product_code', async function (req, res) {
 // 	});
 // });
 // console.log(description);
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // Full Object Test Route
 
 router.get('/test-object/:product_code', async function (req, res) {
@@ -686,6 +708,7 @@ router.get('/test-object/:product_code', async function (req, res) {
 	// finalElecPhys = select(newElecPhysKeys, newElecPhysVals);
 
 	// var finalInfo = {};
+
 	var finalSpecs = {};
 	var finalAV = {};
 	var finalAutomation = {};
@@ -728,6 +751,19 @@ router.get('/test-object/:product_code', async function (req, res) {
 	// 	dataObj: finalObj
 	// 	// features: features
 	// });
+	var checkContent = [];
+	checkContent = [finalAV, finalAutomation, finalElecPhys];
+
+	checkContent.forEach((element) => {
+		if (element === '') {
+			element = element;
+		} else {
+			checkContent.remove(element);
+		}
+	});
+
+	console.log(checkContent);
+
 	description = Object.values(description);
 	// console.log(typeof description);
 	var data = {};
