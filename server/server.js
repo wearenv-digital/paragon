@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('../public'));
 app.use('/public', express.static('../public'));
-app.use(require('./routes-copy.js'));
+app.use(require('./routes.js'));
 
 var server = app.listen;
 
