@@ -9,7 +9,7 @@ const {
 	getAutomation,
 	getElecPhys,
 	getDesc
-} = require('./db');
+} = require('../../config/db');
 
 // middleware for router
 router.use(function timeLog(req, res, next) {

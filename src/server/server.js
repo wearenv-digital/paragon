@@ -1,5 +1,5 @@
 const express = require('express');
-require('dotenv').config('./');
+require('dotenv').config('../config');
 const bodyParser = require('body-parser');
 const { json } = require('body-parser');
 const path = require('path');
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('../public'));
 app.use('/public', express.static('../public'));
-app.use(require('./routes.js'));
+app.use(require('../controller/routes/routes'));
 
 var server = app.listen;
 
