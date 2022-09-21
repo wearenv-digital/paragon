@@ -23,7 +23,7 @@ router.use(function timeLog(req, res, next) {
 
 // docker testing
 router.get('/', (req, res) => {
-	res.sendFile(path.resolve('../public/index.html'));
+	res.sendFile(path.resolve('./src/public/index.html'));
 });
 
 router.get('/docker-test', (req, res) => {
@@ -31,7 +31,7 @@ router.get('/docker-test', (req, res) => {
 });
 
 router.get('/product-page-template-copy', (req, res) => {
-	res.sendFile(path.resolve('../public/product-page-template-copy.html'));
+	res.sendFile(path.resolve('../../public/product-page-template-copy.html'));
 });
 
 // main product-page route
