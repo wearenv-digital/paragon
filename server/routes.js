@@ -21,8 +21,13 @@ router.use(function timeLog(req, res, next) {
 
 // routes
 
+// docker testing
 router.get('/', (req, res) => {
 	res.sendFile(path.resolve('../public/index.html'));
+});
+
+router.get('/docker-test', (req, res) => {
+	res.send('<h1>WORKING  </h1>');
 });
 
 router.get('/product-page-template-copy', (req, res) => {

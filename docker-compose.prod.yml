@@ -1,0 +1,6 @@
+version: '3'
+services:
+  paragon:
+    environment:
+      - NODE_ENV=production
+    command: node /server/server.js
