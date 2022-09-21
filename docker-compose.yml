@@ -1,8 +1,56 @@
-version: '3'
+version: "3"
 services:
+  db:
+    container_name: pg_container
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: wearenv
+      POSTGRES_DB: paragon
+    env_file:
+      - ./.env
+    
+    volumes:
+      - ./pgdata:/var/lib/postgres/data
+    ports:
+      - "5432:5432"
+  
+  pgadmin:
+    
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=design@wearenv.co.uk
+    env_file:
+      - .env
+    ports:
+      - "5050:80"
+  
+  web:
+    container_name: paragon_web
+    build: .
+    command: npm run dev
+    volumes:
+      - .:/app
+      - node_modules
+    depends_on:
+      - db
+    environment:
+      - name=value
+
+
+
+  
+  
+    
   paragon:
     build: .  
     ports:
       - "3030:4000"
+
+
+
+
+
 
     

@@ -1,7 +1,8 @@
 FROM node:16
 WORKDIR /app
-COPY server /app
+COPY package.json /app/
 RUN npm install
+COPY server /app
 COPY . ./
 ENV PORT 4000
 EXPOSE $PORT
