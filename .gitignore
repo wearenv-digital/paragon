@@ -1,9 +1,12 @@
-
-
 # ignore all temp/
 temp/
-
 # ignore all .env
 *.env
 
+node_modules
+
+Dockerfile
+.dockerignore
+.git
+.gitignore
 
