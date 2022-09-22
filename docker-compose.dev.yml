@@ -7,3 +7,9 @@ services:
     environment:
       - NODE_ENV=development
     command: npm run dev
+    ports:
+      - "3030:4000"
+  
+
+  
+    

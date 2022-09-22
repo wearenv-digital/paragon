@@ -12,12 +12,11 @@ var config;
 config = {
 	mysql_pool: mysql.createPool({
 		host: 'localhost',
-		user: 'root',
-		password: '',
+		user: 'admin',
+		password: 'drubbinggeldfrontally',
 		database: 'paragon'
 	})
 };
 
-pool.query();
 // module.exports = client;
 module.exports = config;

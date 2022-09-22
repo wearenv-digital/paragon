@@ -12,12 +12,12 @@ const port = process.env.PORT || 3030;
 const app = express();
 
 app.set('view engine', 'ejs');
-app.set('views', path.resolve('../paragon/src/views'));
+app.set('views', path.resolve('src/views'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static('/src/public/'));
-app.use('/public', express.static('../paragon/src/public/'));
+app.use(express.static('./src/public/'));
+app.use('/public', express.static('src/public/'));
 app.use(require('../controller/routes/routes'));
 
 var server = app.listen;
