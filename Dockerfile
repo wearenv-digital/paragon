@@ -4,7 +4,7 @@ COPY package.json /app/
 RUN npm install
 COPY src/ /app
 COPY . ./
-ENV PORT 4000
+ENV PORT 3030
 EXPOSE $PORT
 CMD ["node", "/server/server.js"]
 
