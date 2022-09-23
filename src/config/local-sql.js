@@ -8,15 +8,28 @@ var mysql = require('mysql');
 // 	database: paragon
 // });
 
+// var config;
+// config = {
+// 	mysql_pool: mysql.createPool({
+// 		host: 'localhost',
+// 		user: 'admin',
+// 		password: 'drubbinggeldfrontally',
+// 		database: 'paragon'
+// 	})
+// };
+
+// THE FOLLOWING CONFIG WORKS FOR LOCAL TESTING. do NOT change.
 var config;
 config = {
 	mysql_pool: mysql.createPool({
 		host: 'localhost',
-		user: 'admin',
-		password: 'drubbinggeldfrontally',
+		user: 'root',
+		password: '',
 		database: 'paragon'
 	})
 };
+
+// end working local config
 
 // module.exports = client;
 module.exports = config;
