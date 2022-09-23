@@ -39,7 +39,7 @@ router.get('/marine', (req, res) => {
 });
 
 router.get('/law-enforcement', (req, res) => {
-	res.render('law-enforcement');
+	res.render('law');
 });
 
 router.get('/parking', (req, res) => {
@@ -50,12 +50,16 @@ router.get('/security', (req, res) => {
 	res.render('security');
 });
 
+router.get('/product-category', (req, res) => {
+	res.render('product-category');
+});
 
 // router.get('/product-page', (req, res) => {
 // 	res.render('new');
 // });
 
 // main product-page route
+// we might need to change this slug at some point
 
 router.get('/product-page/:product_code', async function (req, res) {
 	if (!req.params || req.params == undefined) {
