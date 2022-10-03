@@ -22,9 +22,9 @@ router.use(function timeLog(req, res, next) {
 // routes
 
 // docker testing
-router.get('/', (req, res) => {
-	res.sendFile(path.resolve('./src/public/index.html'));
-});
+// router.get('/', (req, res) => {
+// 	res.sendFile(path.resolve('./src/public/index.html'));
+// });
 
 router.get('/docker-test', (req, res) => {
 	res.send('<h1>WORKING  </h1>');
@@ -32,6 +32,10 @@ router.get('/docker-test', (req, res) => {
 
 router.get('/product-page-template-copy', (req, res) => {
 	res.sendFile(path.resolve('../../public/product-page-template-copy.html'));
+});
+
+router.get('/', (req, res) => {
+	res.render('index-test');
 });
 
 router.get('/marine', (req, res) => {
@@ -52,6 +56,94 @@ router.get('/security', (req, res) => {
 
 router.get('/product-category', (req, res) => {
 	res.render('product-category');
+});
+
+router.get('/products/cctv', (req, res) => {
+	res.render('products/cctv');
+});
+
+router.get('/products/camera-collection', (req, res) => {
+	res.render('cameras-collection');
+});
+
+router.get('/products/access-control', (req, res) => {
+	res.render('access');
+});
+
+// READERS COLLECTION
+router.get('/products/access-control/readers', (req, res) => {
+	res.render('readers-collection');
+});
+
+// READERS CATERGORY PAGES
+router.get('/products/access-control/readers/proximity-readers', (req, res) => {
+	res.render('proximity-readers');
+});
+
+router.get('/products/access-control/readers/qr', (req, res) => {
+	res.render('qr-readers');
+});
+
+router.get('/products/access-control/readers/bluetooth-readers', (req, res) => {
+	res.render('bluetooth-readers');
+});
+
+router.get('/products/access-control/readers/poe-readers', (req, res) => {
+	res.render('poe-readers');
+});
+
+router.get('/products/access-control/readers/fingerprint-readers', (req, res) => {
+	res.render('fingerprint-readers');
+});
+
+router.get('/products/access-control/readers/pin-keypad-readers', (req, res) => {
+	res.render('pin-keypad-readers');
+});
+
+router.get(
+	'/products/access-control/readers/universal-proximity-readers',
+	(req, res) => {
+		res.render('universal-proximity');
+	}
+);
+
+router.get(
+	'/products/access-control/readers/facial-recognition-readers',
+	(req, res) => {
+		res.render('facial-recognition-readers');
+	}
+);
+
+router.get('/products/access-control/anpr', (req, res) => {
+	res.render('anpr');
+});
+
+router.get('/products/interview-recorders', (req, res) => {
+	res.render('interview-recorders');
+});
+
+router.get('/products/visitor-management', (req, res) => {
+	res.render('visitor-management');
+});
+
+router.get('/products/panic-alarms', (req, res) => {
+	res.render('panic-alarms');
+});
+
+router.get('/contact', (req, res) => {
+	res.render('contact');
+});
+
+router.get('/frequently-asked', (req, res) => {
+	res.render('faq');
+});
+
+router.get('/sell', (req, res) => {
+	res.render('sell');
+});
+
+router.get('/terms-conditions', (req, res) => {
+	res.render('terms');
 });
 
 // router.get('/product-page', (req, res) => {
