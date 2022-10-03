@@ -35,7 +35,7 @@ router.get('/product-page-template-copy', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-	res.render('index-test');
+	res.render('index');
 });
 
 router.get('/marine', (req, res) => {
@@ -114,8 +114,32 @@ router.get(
 	}
 );
 
+router.get('/products/access-control/door-controllers', (req, res) => {
+	res.render('door-controllers-collection');
+});
+
+router.get('/products/access-control/access-control-software', (req, res) => {
+	res.render('access-control-software-collection');
+});
+
 router.get('/products/access-control/anpr', (req, res) => {
 	res.render('anpr');
+});
+
+router.get('/products/access-control/anpr/anpr-cameras', (req, res) => {
+	res.render('anpr-cameras');
+});
+
+router.get('/products/access-control/anpr/anpr-software', (req, res) => {
+	res.render('anpr-software');
+});
+
+router.get('/products/access-control/anpr/anpr-signage', (req, res) => {
+	res.render('anpr-signage');
+});
+
+router.get('/products/access-control/anpr/vehicle-counting', (req, res) => {
+	res.render('vehicle-counting');
 });
 
 router.get('/products/interview-recorders', (req, res) => {

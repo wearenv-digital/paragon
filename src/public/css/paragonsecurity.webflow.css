@@ -1411,6 +1411,36 @@ img.product-image.main-product-img {
 	vertical-align: middle
 }
 
+.use-case-image-wrapper {
+	max-width: 200px;
+	justify-content: space-between;
+}
+
+.use-case-image {
+	text-align: left;
+	max-width: 75%;
+	height: auto;
+	vertical-align: middle;
+}
+
+.bollard-camera {
+	max-height: 100px;
+	overflow: hidden;
+}
+
+img.bollard-image {
+	margin-bottom: -200px;
+}
+
+.example-use.anpr {
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+.use-case-image-wrapper.anpr {
+	max-width: 400px;
+}
+
 .specs-container {
 	width: 80%;
 	max-width: 99%;
