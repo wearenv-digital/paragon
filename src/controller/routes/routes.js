@@ -59,7 +59,7 @@ router.get('/product-category', (req, res) => {
 });
 
 router.get('/products/cctv', (req, res) => {
-	res.render('products/cctv');
+	res.render('cctv');
 });
 
 router.get('/products/camera-collection', (req, res) => {
@@ -169,6 +169,35 @@ router.get('/sell', (req, res) => {
 router.get('/terms-conditions', (req, res) => {
 	res.render('terms');
 });
+
+router.get('/services', (req, res) => {
+	res.render('services-collection')
+})
+
+router.get('/services/system-design', (req, res) => {
+	res.render('system-design-build');
+});
+
+router.get('/services/installations', (req, res) => {
+	res.render('installations');
+});
+
+router.get('/services/risk', (req, res) => {
+	res.render('risk-assessment');
+});
+
+router.get('/services/risk/security-risk', (req, res) => {
+	res.render('security-risk');
+});
+
+router.get('/services/risk/fire-risk', (req, res) => {
+	res.render('fire-risk');
+});
+
+
+
+
+
 
 // router.get('/product-page', (req, res) => {
 // 	res.render('new');

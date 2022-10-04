@@ -12,6 +12,17 @@ th {
 	text-align: left
 }
 
+ul.features-list-1 {
+	padding: 0;
+	list-style-type: none;
+	list-style-position: inside;
+}
+
+ul.features-list-1>li {
+	padding-bottom: 3px;
+	padding-left: 20px;
+}
+
 /* 
 .product-container {
 	border-style: solid;
@@ -35,6 +46,8 @@ th {
 	border-width: 3px;
 	border-color: #f600ff
 } */
+
+
 
 @media screen and (max-width:991px) {
 	.nav-link {
@@ -3821,6 +3834,8 @@ td.val-data {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap
 }
+
+
 
 .amenity-title-2 {
 	margin-top: 15px;
