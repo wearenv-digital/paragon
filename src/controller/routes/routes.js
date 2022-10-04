@@ -194,6 +194,9 @@ router.get('/services/risk/fire-risk', (req, res) => {
 	res.render('fire-risk');
 });
 
+router.get('/services/site-maintenance', (req, res) => {
+	res.render('site-maintenance');
+});
 
 
 
