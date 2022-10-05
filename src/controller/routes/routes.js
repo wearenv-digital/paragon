@@ -62,9 +62,84 @@ router.get('/product-category', (req, res) => {
 	res.render('product-category');
 });
 
+// CCTV categories
+//
+//
+//
+
 router.get('/products/cctv', (req, res) => {
 	res.render('cctv');
 });
+
+router.get('/products/cctv/cameras', (req, res) => {
+	res.render('cameras');
+});
+
+router.get('/products/cctv/camera-housings', (req, res) => {
+	res.render('camera-housings');
+});
+
+router.get('/products/cctv/cctv-transmission', (req, res) => {
+	res.render('cctv-transmission');
+});
+
+router.get('/products/cctv/cctv-recording', (req, res) => {
+	res.render('cctv-recording');
+});
+
+router.get('/products/cctv/cctv-analytics', (req, res) => {
+	res.render('cctv-analytics');
+});
+
+router.get('/products/cctv/cctv-ancillaries', (req, res) => {
+	res.render('cctv-ancillaries');
+});
+
+router.get('/products/cctv/security-management-software', (req, res) => {
+	res.render('management-software');
+});
+
+//
+//
+//
+//
+// camera categories routes
+//
+//
+//
+//
+//
+
+router.get('/products/cctv/cameras/', (req, res) => {
+	res.render('cameras')
+})
+
+router.get('/products/cctv/cameras/prison-cell', (req, res) => {
+	res.render('prison-cell');
+});
+
+router.get('/products/cctv/cameras/marine-cameras', (req, res) => {
+	res.render('marine-cameras');
+});
+
+router.get('/products/cctv/cameras/hazardous-enviornment', (req, res) => {
+	res.render('hazardous-environment');
+});
+
+router.get('/products/cctv/cameras/thermal-cameras', (req, res) => {
+	res.render('thermal-cameras');
+});
+
+router.get('/products/cctv/cameras/commercial', (req, res) => {
+	res.render('commercial-cameras');
+});
+
+//
+//
+//
+//
+
+
 
 router.get('/products/camera-collection', (req, res) => {
 	res.render('cameras-collection');
