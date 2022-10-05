@@ -20,7 +20,23 @@ ul.features-list-1 {
 
 ul.features-list-1>li {
 	padding-bottom: 3px;
-	padding-left: 20px;
+	padding-left: 26px;
+}
+
+li.nested-list-start-item {
+	padding-top: 8px;
+}
+
+ul.nested-features-list-no-style {
+	list-style-type: none;
+	list-style-position: inside;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+ul.nested-features-list-no-style>li {
+	padding-top: 3px;
+
 }
 
 /* 
@@ -3491,6 +3507,50 @@ td.val-data {
 	text-align: center
 }
 
+.service.category-img {
+	background-image: url();
+}
+
+.service.category-img._2 {
+	background-image: url();
+}
+
+.service.category-img._3 {
+	background-image: url();
+}
+
+.service.category-img._4 {
+	background-image: url();
+}
+
+.service.category-img._5 {
+	background-image: url();
+}
+
+.service.category-img._6 {
+	background-image: url();
+}
+
+.service.category-img._7 {
+	background-image: url();
+}
+
+.markets.category-img {
+	background-image: url();
+}
+
+.markets.category-img._2 {
+	background-image: url();
+}
+
+.markets.category-img._3 {
+	background-image: url();
+}
+
+.markets.category-img._4 {
+	background-image: url();
+}
+
 .category-name {
 	margin-top: 10px;
 	margin-bottom: 2px;
@@ -6657,6 +6717,8 @@ html.w-mod-js [data-ix=display-none] {
 	}
 
 	.individual-category.cctv,
+	.individual-category.services,
+	.individual-category.markets,
 	.nav-right-2.links {
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
@@ -6664,6 +6726,8 @@ html.w-mod-js [data-ix=display-none] {
 		-ms-flex-direction: column;
 		flex-direction: column
 	}
+
+
 
 	.nav-right-2.links {
 		height: auto;

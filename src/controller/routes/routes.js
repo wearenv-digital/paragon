@@ -38,6 +38,10 @@ router.get('/', (req, res) => {
 	res.render('index');
 });
 
+router.get('/about', (req, res) => {
+	res.render('about');
+});
+
 router.get('/marine', (req, res) => {
 	res.render('marine');
 });
@@ -171,15 +175,31 @@ router.get('/terms-conditions', (req, res) => {
 });
 
 router.get('/services', (req, res) => {
-	res.render('services-collection')
-})
+	res.render('services-collection');
+});
 
 router.get('/services/system-design', (req, res) => {
 	res.render('system-design-build');
 });
 
+router.get('/services/service-support', (req, res) => {
+	res.render('service-support');
+});
+
 router.get('/services/installations', (req, res) => {
 	res.render('installations');
+});
+
+router.get('/services/cctv-alarm-monitoring', (req, res) => {
+	res.render('cctv-alarm-monitoring');
+});
+
+router.get('/services/training', (req, res) => {
+	res.render('training');
+});
+
+router.get('/services/consultancy', (req, res) => {
+	res.render('consultancy');
 });
 
 router.get('/services/risk', (req, res) => {
@@ -197,10 +217,6 @@ router.get('/services/risk/fire-risk', (req, res) => {
 router.get('/services/site-maintenance', (req, res) => {
 	res.render('site-maintenance');
 });
-
-
-
-
 
 // router.get('/product-page', (req, res) => {
 // 	res.render('new');
