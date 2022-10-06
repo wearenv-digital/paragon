@@ -6275,11 +6275,13 @@ html.w-mod-js [data-ix=display-none] {
 /* Sidebar navigation */
 
 .sidebar-wrapper {
-	width: 600px;
-	max-width: 600px;
-	margin-top: 200px;
-	margin-bottom: 100px;
-	border: 2px solid #0064b1;
+	/* width: 20%; */
+	height: 80%;
+	min-width: 300px;
+	max-width: 800px;
+	margin-top: 114px;
+	margin-bottom: 0;
+	/* border: 2px solid #0064b1; */
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
@@ -6304,13 +6306,23 @@ html.w-mod-js [data-ix=display-none] {
 	margin: 3px;
 }
 
+.js-scroll {
+	opacity: 0;
+	transition: opacity 500ms;
+}
+
+.js-scroll.scrolled {
+	opacity: 1;
+}
+
+
 @media screen and (max-width:991px) {
 	.sidebar-wrapper {
 		display: none;
 	}
 }
 
-/* ALL MEDIA QUERIES */
+/* ALL MEDIA QUERIES except sidebar*/
 
 @media screen and (max-width:991px) {
 	.nav-link {
