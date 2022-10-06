@@ -26,6 +26,10 @@ router.use(function timeLog(req, res, next) {
 // 	res.sendFile(path.resolve('./src/public/index.html'));
 // });
 
+router.get('/layout', (req, res) => {
+	res.render('layout');
+});
+
 router.get('/docker-test', (req, res) => {
 	res.send('<h1>WORKING  </h1>');
 });
@@ -111,8 +115,8 @@ router.get('/products/cctv/security-management-software', (req, res) => {
 //
 
 router.get('/products/cctv/cameras/', (req, res) => {
-	res.render('cameras')
-})
+	res.render('cameras');
+});
 
 router.get('/products/cctv/cameras/prison-cell', (req, res) => {
 	res.render('prison-cell');
@@ -138,8 +142,6 @@ router.get('/products/cctv/cameras/commercial', (req, res) => {
 //
 //
 //
-
-
 
 router.get('/products/camera-collection', (req, res) => {
 	res.render('cameras-collection');
