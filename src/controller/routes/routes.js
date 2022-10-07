@@ -295,6 +295,33 @@ router.get('/services/site-maintenance', (req, res) => {
 	res.render('site-maintenance');
 });
 
+// resources routes
+
+router.get('/resources', (req, res) => {
+	res.render('resources');
+});
+
+router.get('/resources/datasheets', (req, res) => {
+	res.render('datasheets');
+});
+
+router.get('/resources/gallery', (req, res) => {
+	res.render('gallery');
+});
+
+router.get('/resources/knowledge', (req, res) => {
+	res.render('knowledge-centre');
+});
+
+router.get('/resources/tools', (req, res) => {
+	res.render('tools');
+});
+
+router.get('/resources/press', (req, res) => {
+	res.render('press');
+});
+
+
 // router.get('/product-page', (req, res) => {
 // 	res.render('new');
 // });
